@@ -1,0 +1,5 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/crosshairs.png","C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/bin/DesktopGL/crosshairs.xnb","TextureProcessor","Texture2DContent",1892,10085,0,5998818
+"C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/galleryFont.spritefont","C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/bin/DesktopGL/galleryFont.xnb","FontDescriptionProcessor","SpriteFontContent",2065,70690,0,416652
+"C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/sky.png","C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/bin/DesktopGL/sky.xnb","TextureProcessor","Texture2DContent",1079607,9216085,0,4479985
+"C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/target.png","C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/bin/DesktopGL/target.xnb","TextureProcessor","Texture2DContent",3395,32485,0,0073374

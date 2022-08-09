@@ -22,3 +22,7 @@ C:\Users\marku\Documents\csharp_projects\monogame_projects\testProject\obj\Debug
 C:\Users\marku\Documents\csharp_projects\monogame_projects\testProject\obj\Debug\netcoreapp3.1\testProject.dll
 C:\Users\marku\Documents\csharp_projects\monogame_projects\testProject\obj\Debug\netcoreapp3.1\testProject.pdb
 C:\Users\marku\Documents\csharp_projects\monogame_projects\testProject\obj\Debug\netcoreapp3.1\testProject.genruntimeconfig.cache
+C:\Users\marku\Documents\csharp_projects\monogame_projects\testProject\bin\Debug\netcoreapp3.1\Content\crosshairs.xnb
+C:\Users\marku\Documents\csharp_projects\monogame_projects\testProject\bin\Debug\netcoreapp3.1\Content\galleryFont.xnb
+C:\Users\marku\Documents\csharp_projects\monogame_projects\testProject\bin\Debug\netcoreapp3.1\Content\sky.xnb
+C:\Users\marku\Documents\csharp_projects\monogame_projects\testProject\bin\Debug\netcoreapp3.1\Content\target.xnb
