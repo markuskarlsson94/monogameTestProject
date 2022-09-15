@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace testProject
+namespace topdownShooter
 {
     public class Player : Unit {
         private float moveVel = 3.0F;

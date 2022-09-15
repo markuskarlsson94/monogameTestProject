@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace testProject {
+namespace topdownShooter {
     public class Unit : Basic2d {
         public Unit(string path, Vector2 pos, Vector2 size) : base(path, pos, size) {
 

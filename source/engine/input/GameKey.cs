@@ -1,4 +1,4 @@
-namespace testProject {
+namespace topdownShooter {
     public class GameKey {
         public int state;
         public string key, print, display;

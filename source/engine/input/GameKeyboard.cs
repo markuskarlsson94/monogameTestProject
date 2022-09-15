@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Media;
 #endregion
 
-namespace testProject {
+namespace topdownShooter {
     public class GameKeyboard {
         public KeyboardState newKeyboard, oldKeyboard;
         public List<GameKey> pressedKeys = new List<GameKey>(), previousPressedKeys = new List<GameKey>();

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace testProject {
+namespace topdownShooter {
     public class Projectile : Unit {
         public float speed;
         public Vector2 direction;

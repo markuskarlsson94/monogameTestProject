@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace testProject {
+namespace topdownShooter {
     public class Basic2d {
         public float rot;
         public Vector2 pos, size;

@@ -2,7 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace testProject {
+namespace topdownShooter {
     public class GameMouse {
         public bool dragging, rightDrag;
         public Vector2 newMousePos, oldMousePos, firstMousePos, newMouseAdjustedPos, systemCursorPos, screenLoc;
@@ -51,7 +51,6 @@ namespace testProject {
         }
 
         public virtual float GetDistanceFromClick() {
-            //return Globals.GetDistance(newMousePos, firstMousePos);
             return Vector2.Distance(newMousePos, firstMousePos);
         }
 
@@ -113,7 +112,7 @@ namespace testProject {
             if (newMouse.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed && oldMouse.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.screenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.screenHeight) {
                 holding = true;
 
-                if(Math.Abs(newMouse.Position.X - firstMouse.Position.X) > 8 || Math.Abs(newMouse.Position.Y - firstMouse.Position.Y) > 8) {
+                if (Math.Abs(newMouse.Position.X - firstMouse.Position.X) > 8 || Math.Abs(newMouse.Position.Y - firstMouse.Position.Y) > 8) {
                     rightDrag = true;
                 }
             }

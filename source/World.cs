@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace testProject {
+namespace topdownShooter {
     public class World {
         public Player player;
         public List<Projectile> projectiles = new List<Projectile>();

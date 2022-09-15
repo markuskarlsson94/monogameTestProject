@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 
-namespace testProject
+namespace topdownShooter
 {
     public class Game1 : Game
     {

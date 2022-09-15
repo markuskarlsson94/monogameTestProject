@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace testProject
+namespace topdownShooter
 {
     public static class Program
     {

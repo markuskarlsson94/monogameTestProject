@@ -1,8 +1,7 @@
 using System;
 using System.Xml.Linq;
 
-//namespace testProjectPrompt {
-namespace testProject {
+namespace topdownShooter {
     public class GameTimer {
         public bool expired;
         protected int mSec;
