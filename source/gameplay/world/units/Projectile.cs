@@ -8,7 +8,6 @@ namespace topdownShooter {
         public Vector2 direction;
         public Unit owner;
         public GameTimer timer;
-        public bool remove = false;
 
         public Projectile(string path, Vector2 pos, Vector2 size, Unit owner, Vector2 direction) : base(path, pos, size) {
             speed = 4;
@@ -33,6 +32,14 @@ namespace topdownShooter {
         } 
 
         public virtual bool HitSomething(List<Unit> units) {
+            foreach (Unit u in units) {
+                if (Vector2.Distance(pos, u.pos) < u.hitDistance) {
+                    System.Console.WriteLine(u);
+                    u.GetHit();
+                    return true;
+                }
+            }
+
             return false;
         }
 

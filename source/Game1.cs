@@ -18,7 +18,7 @@ namespace topdownShooter
         Vector2 targetPosition = new Vector2(300, 300);
         const int targetRadius = 45;
 
-        MouseState mouseState;
+        //MouseState mouseState;
         //bool mouseReleased;
         //int score = 0;
 

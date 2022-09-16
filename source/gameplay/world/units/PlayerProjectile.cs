@@ -13,7 +13,7 @@ namespace topdownShooter {
         } 
 
         public override bool HitSomething(List<Unit> units) {
-            return false;
+            return base.HitSomething(units);
         }
 
         public override void Draw(Vector2 offset) {
