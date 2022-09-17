@@ -5,7 +5,7 @@ using System;
 
 namespace topdownShooter
 {
-    public class Game1 : Game
+    public class TopdownShootherGame : Game
     {
         private GraphicsDeviceManager _graphics;
         //private SpriteBatch _spriteBatch;
@@ -26,7 +26,7 @@ namespace topdownShooter
         World world;
         Basic2d cursor;
 
-        public Game1()
+        public TopdownShootherGame()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
