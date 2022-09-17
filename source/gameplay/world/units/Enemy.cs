@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 
 namespace topdownShooter {
-    public class Enemy : Unit {
+    public class Enemy : GameObject {
         public float speed;
         public float hp;
         //public float hitDist;

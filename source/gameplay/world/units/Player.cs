@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 
 namespace topdownShooter
 {
-    public class Player : Unit {
+    public class Player : GameObject {
         private float moveVel = 3.0F;
 
         public Player(string path, Vector2 pos, Vector2 size) : base(path, pos, size) {

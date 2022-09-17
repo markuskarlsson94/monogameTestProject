@@ -1,11 +1,11 @@
 using Microsoft.Xna.Framework;
 
 namespace topdownShooter {
-    public class Unit : Basic2d {
+    public class GameObject : Basic2d {
         public bool remove;
         public float hitDistance;
         
-        public Unit(string path, Vector2 pos, Vector2 size) : base(path, pos, size) {
+        public GameObject(string path, Vector2 pos, Vector2 size) : base(path, pos, size) {
             remove = false;
         }
 
