@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>c:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/galleryFont.spritefont</SourceFile>
-  <SourceTime>2022-08-09T19:57:42.1156248+02:00</SourceTime>
-  <DestFile>c:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/bin/DesktopGL/Content/galleryFont.xnb</DestFile>
-  <DestTime>2022-09-18T15:19:13.5781892+02:00</DestTime>
+  <SourceFile>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/galleryFont.spritefont</SourceFile>
+  <SourceTime>2022-09-18T20:58:40.5861337+02:00</SourceTime>
+  <DestFile>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/bin/DesktopGL/Content/galleryFont.xnb</DestFile>
+  <DestTime>2022-09-18T20:58:43.7896574+02:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

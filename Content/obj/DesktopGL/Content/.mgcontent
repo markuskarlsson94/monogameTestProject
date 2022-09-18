@@ -4,18 +4,20 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>c:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/sprBullet.png</File>
-    <File>c:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/crosshairs.png</File>
-    <File>c:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/cursor.png</File>
-    <File>c:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/galleryFont.spritefont</File>
-    <File>c:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/sky.png</File>
-    <File>c:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/sprPlayer.png</File>
-    <File>c:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/target.png</File>
+    <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/crosshairs.png</File>
+    <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/cursor.png</File>
+    <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/galleryFont.spritefont</File>
+    <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/orb.png</File>
+    <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/sky.png</File>
+    <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/sprBullet.png</File>
+    <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/sprPlayer.png</File>
+    <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/target.png</File>
   </SourceFiles>
   <DestFiles>
-    <File>sprBullet.png</File>
     <File xsi:nil="true" />
-    <File>cursor.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
