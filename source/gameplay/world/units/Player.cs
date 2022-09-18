@@ -2,22 +2,31 @@ using Microsoft.Xna.Framework;
 
 namespace topdownShooter
 {
-    public class Player : GameObject {
-        private float moveVel = 3.0F;
+    public class Player : GameObject, IMovementComponent {
         private float canShootTimerMax = 20f;
         private float canShootTimer;
         private float ammoMax = 3;
         private float ammo;
         private float ammoTimerMax = 120f;
         private float ammoTimer;
+        private float acc = 0.5f;
+
+        private MovementComponent movementComponent;
 
         public Player(string path, Vector2 pos) : base(path, pos) {
             canShootTimer = 0;
             ammo = ammoMax;
             ammoTimer = ammoTimerMax;
+
+            movementComponent = new MovementComponent();
+        }
+
+        public void AddVel(Vector2 vel) {
+            movementComponent.AddVel(vel);
         }
 
         public override void Update() {
+            //Input
             float horizontalInput = 0.0F;
             if (Globals.keyboard.GetPress("D")) {
                 horizontalInput += 1.0F;
@@ -32,13 +41,16 @@ namespace topdownShooter
                 verticalInput -= 1.0F;
             }
 
+            //Movement
             Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
             if (inputVector.Length() > 0) inputVector.Normalize();
 
-            pos += inputVector*moveVel;
+            movementComponent.SetAcc(inputVector*acc);
+            movementComponent.Update(ref pos);
 
             rot = Globals.RotateTowards(pos, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y));
 
+            //Shooting
             if (canShootTimer > 0) {
                 canShootTimer -= 1f;
             }
@@ -60,6 +72,10 @@ namespace topdownShooter
                     GameGlobals.PassProjectile(new PlayerProjectile(pos, this, dir));
                     canShootTimer = canShootTimerMax;
                     ammo -= 1;
+                    
+                    dir.Normalize();
+                    dir = -dir;
+                    AddVel(dir);
                 }
             }
 
