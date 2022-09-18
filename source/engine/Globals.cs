@@ -15,6 +15,7 @@ namespace topdownShooter {
         public static GameKeyboard keyboard;
         public static GameMouse mouse;
         public static GameTime gameTime;
+        public static SpriteFont gameFont;
 
         public static float RotateTowards(Vector2 Pos, Vector2 focus) {
             float h, sineTheta, angle;
