@@ -75,6 +75,9 @@ namespace topdownShooter {
             foreach (Enemy e in enemies) {
                 e.Draw(offset);
             }
+
+            string ammoString = $"Ammo: {player.Ammo.ToString()}/{player.AmmoMax.ToString()}";
+            Globals.spriteBatch.DrawString(Globals.gameFont, ammoString , new Vector2(10, 10), Color.White);
         }
     }
 }

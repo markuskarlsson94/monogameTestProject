@@ -11,6 +11,10 @@ namespace topdownShooter
         private float ammoTimer;
         private float acc = 0.5f;
 
+        //Properties
+        public float Ammo => ammo;
+        public float AmmoMax => ammoMax;
+
         private MovementComponent movementComponent;
 
         public Player(string path, Vector2 pos) : base(path, pos) {
