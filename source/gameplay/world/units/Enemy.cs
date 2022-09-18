@@ -5,11 +5,13 @@ namespace topdownShooter {
         public float speed;
         public float hp;
         protected float hitTimer, hitTimerMax;
+        protected float acc = 0.3f;
+        protected float speedMax = 1;
         protected MovementComponent movementComponent;
 
         public Enemy(string path, Vector2 pos) : base(path, pos) {
             movementComponent = new MovementComponent();
-            movementComponent.SetMaxSpeed(1);
+            movementComponent.SetMaxSpeed(speedMax);
             hitTimer = 0;
             hitTimerMax = 30f;
         }
@@ -23,7 +25,7 @@ namespace topdownShooter {
                 if (Vector2.Distance(pos, player.pos) > 16) {
                     var dir = player.pos - pos;
                     dir.Normalize();
-                    movementComponent.SetAcc(dir*0.5f);
+                    movementComponent.SetAcc(dir*acc);
                 } else {
                     movementComponent.SetAcc(new Vector2(0, 0));
                 }
