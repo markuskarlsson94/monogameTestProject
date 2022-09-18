@@ -8,6 +8,7 @@ namespace topdownShooter {
         public Vector2 direction;
         public GameObject owner;
         public GameTimer timer;
+        private float hitVel = 2;
 
         public Projectile(string path, Vector2 pos, GameObject owner, Vector2 direction) : base(path, pos) {
             speed = 4;
@@ -35,7 +36,9 @@ namespace topdownShooter {
             foreach (GameObject u in units) {
                 if (Vector2.Distance(pos, u.pos) < u.hitDistance) {
                     System.Console.WriteLine(u);
-                    u.GetHit();
+
+                    Vector2 v = Vector2.Normalize(direction*hitVel);
+                    u.GetHit(v);
                     return true;
                 }
             }

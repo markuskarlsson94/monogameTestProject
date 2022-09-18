@@ -13,7 +13,7 @@ namespace topdownShooter {
             base.Update();
         }
 
-        public virtual void GetHit() {
+        public virtual void GetHit(Vector2 vel) {
 
         }
 
