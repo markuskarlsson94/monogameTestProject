@@ -7,7 +7,7 @@
     <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/crosshairs.png</File>
     <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/cursor.png</File>
     <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/galleryFont.spritefont</File>
-    <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/orb.png</File>
+    <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/sprOrb.png</File>
     <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/sky.png</File>
     <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/sprBullet.png</File>
     <File>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/sprPlayer.png</File>
@@ -17,7 +17,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
-    <File xsi:nil="true" />
+    <File>sprOrb.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

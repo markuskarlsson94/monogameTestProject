@@ -31,3 +31,4 @@ C:\Users\marku\Documents\csharp_projects\monogame_projects\testProject\bin\Debug
 C:\Users\marku\Documents\csharp_projects\monogame_projects\testProject\bin\Debug\netcoreapp3.1\Content\sprBullet.xnb
 C:\Users\marku\Documents\csharp_projects\monogame_projects\testProject\bin\Debug\netcoreapp3.1\Content\sprCursor.xnb
 C:\Users\marku\Documents\csharp_projects\monogame_projects\testProject\bin\Debug\netcoreapp3.1\Content\orb.xnb
+C:\Users\marku\Documents\csharp_projects\monogame_projects\testProject\bin\Debug\netcoreapp3.1\Content\sprOrb.xnb

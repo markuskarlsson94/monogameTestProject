@@ -1,2 +1,2 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/orb.png","C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/bin/DesktopGL/Content/orb.xnb","TextureProcessor","Texture2DContent",583,149,0,2226625
+"C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/sprOrb.png","C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/bin/DesktopGL/Content/sprOrb.xnb","TextureProcessor","Texture2DContent",583,149,0,2680644
