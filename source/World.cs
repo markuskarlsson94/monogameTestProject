@@ -7,48 +7,54 @@ namespace topdownShooter {
         public Player player;
         public List<Projectile> projectiles = new List<Projectile>();
         public List<Enemy> enemies = new List<Enemy>();
+        public bool paused;
 
         public World() {
             player = new Player("sprPlayer", new Vector2(400, 200));
             GameGlobals.PassProjectile = AddProjectile;
             GameGlobals.PassEnemy = AddEnemy;
             Vector2 offset = new Vector2(0, 0);
+            paused = false;
 
             AddEnemy(new Enemy1(new Vector2(200, 200)));
         }
 
         public virtual void Update() {
-            player.Update();
+            if (Globals.keyboard.GetPressed("P")) paused = !paused;
 
-            for (int i = 0; i < projectiles.Count; i++) {
-                Projectile p = projectiles[i];
+            if (!paused) {
+                player.Update();
 
-                if (p.remove) {
-                    projectiles.RemoveAt(i);
-                    i--;
-                } else {
-                    p.Update(enemies.ToList<GameObject>());
+                for (int i = 0; i < projectiles.Count; i++) {
+                    Projectile p = projectiles[i];
+
+                    if (p.remove) {
+                        projectiles.RemoveAt(i);
+                        i--;
+                    } else {
+                        p.Update(enemies.ToList<GameObject>());
+                    }
                 }
+
+                for (int i = 0; i < enemies.Count; i++) {
+                    Enemy e = enemies[i];
+
+                    if (e.remove) {
+                        enemies.RemoveAt(i);
+                        i--;
+                    } else {
+                        e.Update(player);
+                    }
+                }
+                
+                /*foreach (Projectile p in projectiles) {
+                    if (p.done) {
+                        projectiles.Remove(p);
+                    } else {
+                        p.Update(null);
+                    }
+                }*/
             }
-
-            for (int i = 0; i < enemies.Count; i++) {
-                Enemy e = enemies[i];
-
-                if (e.remove) {
-                    enemies.RemoveAt(i);
-                    i--;
-                } else {
-                    e.Update(player);
-                }
-            }
-            
-            /*foreach (Projectile p in projectiles) {
-                if (p.done) {
-                    projectiles.Remove(p);
-                } else {
-                    p.Update(null);
-                }
-            }*/
         }
 
         public virtual void AddProjectile(object obj) {
