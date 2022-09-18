@@ -8,19 +8,21 @@ namespace topdownShooter {
         protected float acc = 0.3f;
         protected float speedMax = 1;
         protected MovementComponent movementComponent;
+        protected Player player;
 
-        public Enemy(string path, Vector2 pos) : base(path, pos) {
+        public Enemy(string path, Vector2 pos, Player player) : base(path, pos) {
             movementComponent = new MovementComponent();
             movementComponent.SetMaxSpeed(speedMax);
             hitTimer = 0;
             hitTimerMax = 30f;
+            this.player = player;
         }
 
         public void AddVel(Vector2 vel) {
             movementComponent.AddVel(vel);
         }
 
-        public virtual void Update(Player player) {
+        public override void Update() {
             if (hitTimer <= 0) {
                 if (Vector2.Distance(pos, player.pos) > 16) {
                     var dir = player.pos - pos;

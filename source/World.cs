@@ -19,7 +19,7 @@ namespace topdownShooter {
             Vector2 offset = new Vector2(0, 0);
             paused = false;
 
-            AddEnemy(new Enemy1(new Vector2(200, 200)));
+            AddEnemy(new Enemy1(new Vector2(200, 200), player));
         }
 
         public virtual void Update() {
@@ -46,7 +46,18 @@ namespace topdownShooter {
                         enemies.RemoveAt(i);
                         i--;
                     } else {
-                        e.Update(player);
+                        e.Update();
+                    }
+                }
+
+                for (int i = 0; i < orbs.Count; i++) {
+                    Orb o = orbs[i];
+
+                    if (o.remove) {
+                        orbs.RemoveAt(i);
+                        i--;
+                    } else {
+                        o.Update();
                     }
                 }
                 
