@@ -16,6 +16,7 @@ namespace topdownShooter {
             hp -= 1;
             if (hp <= 0) {
                 remove = true;
+                GameGlobals.PassOrb(new Orb(pos));
             }
         }
     }

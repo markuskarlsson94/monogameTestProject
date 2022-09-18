@@ -7,12 +7,15 @@ namespace topdownShooter {
         public Player player;
         public List<Projectile> projectiles = new List<Projectile>();
         public List<Enemy> enemies = new List<Enemy>();
+        public List<Orb> orbs = new List<Orb>();
+
         public bool paused;
 
         public World() {
             player = new Player("sprPlayer", new Vector2(400, 200));
             GameGlobals.PassProjectile = AddProjectile;
             GameGlobals.PassEnemy = AddEnemy;
+            GameGlobals.PassOrb = AddOrb;
             Vector2 offset = new Vector2(0, 0);
             paused = false;
 
@@ -63,7 +66,11 @@ namespace topdownShooter {
 
         public virtual void AddEnemy(object obj) {
             enemies.Add((Enemy)obj);
-        } 
+        }
+
+        public virtual void AddOrb(object obj) {
+            orbs.Add((Orb)obj);
+        }
 
         public virtual void Draw(Vector2 offset) {
             player.Draw(offset);
@@ -74,6 +81,10 @@ namespace topdownShooter {
 
             foreach (Enemy e in enemies) {
                 e.Draw(offset);
+            }
+
+            foreach (Orb o in orbs) {
+                o.Draw(offset);
             }
 
             string ammoString = $"Ammo: {player.Ammo.ToString()}/{player.AmmoMax.ToString()}";
