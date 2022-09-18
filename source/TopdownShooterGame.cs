@@ -13,7 +13,7 @@ namespace topdownShooter
         /*Texture2D targetSprite;
         Texture2D crosshairsSprite;
         Texture2D backgroundSprite;*/
-        SpriteFont gameFont;
+        //SpriteFont gameFont;
 
         Vector2 targetPosition = new Vector2(300, 300);
         const int targetRadius = 45;
@@ -22,7 +22,6 @@ namespace topdownShooter
         //bool mouseReleased;
         //int score = 0;
 
-        //private Player player;
         World world;
         Basic2d cursor;
 
@@ -61,7 +60,7 @@ namespace topdownShooter
             /*targetSprite = Content.Load<Texture2D>("target");
             crosshairsSprite = Content.Load<Texture2D>("crosshairs");
             backgroundSprite = Content.Load<Texture2D>("sky");*/
-            gameFont = Content.Load<SpriteFont>("galleryFont");
+            Globals.gameFont = Content.Load<SpriteFont>("galleryFont");
 
             world = new World();
             cursor = new Basic2d("cursor", Vector2.Zero);
