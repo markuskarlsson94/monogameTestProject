@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/target.png</SourceFile>
+  <SourceFile>c:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/target.png</SourceFile>
   <SourceTime>2022-08-09T19:57:42.1912077+02:00</SourceTime>
-  <DestFile>C:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/bin/DesktopGL/Content/target.xnb</DestFile>
-  <DestTime>2022-09-11T22:09:29.7580952+02:00</DestTime>
+  <DestFile>c:/Users/marku/Documents/csharp_projects/monogame_projects/testProject/Content/bin/DesktopGL/Content/target.xnb</DestFile>
+  <DestTime>2022-09-18T15:19:13.8831971+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

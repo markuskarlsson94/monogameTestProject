@@ -49,5 +49,9 @@ namespace topdownShooter {
 
             return angle;
         }
+
+        public static float DegToRad(float degrees) {
+            return (float)(Math.PI/180)*degrees;
+        }
     }
 }

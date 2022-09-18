@@ -9,7 +9,7 @@ namespace topdownShooter {
         public GameObject owner;
         public GameTimer timer;
 
-        public Projectile(string path, Vector2 pos, Vector2 size, GameObject owner, Vector2 direction) : base(path, pos, size) {
+        public Projectile(string path, Vector2 pos, GameObject owner, Vector2 direction) : base(path, pos) {
             speed = 4;
             this.owner = owner;
             direction.Normalize();

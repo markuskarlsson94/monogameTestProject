@@ -5,7 +5,7 @@ namespace topdownShooter {
         public bool remove;
         public float hitDistance;
         
-        public GameObject(string path, Vector2 pos, Vector2 size) : base(path, pos, size) {
+        public GameObject(string path, Vector2 pos) : base(path, pos) {
             remove = false;
         }
 

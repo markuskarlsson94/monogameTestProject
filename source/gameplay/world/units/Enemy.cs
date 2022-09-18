@@ -4,11 +4,9 @@ namespace topdownShooter {
     public class Enemy : GameObject {
         public float speed;
         public float hp;
-        //public float hitDist;
 
-        public Enemy(string path, Vector2 pos, Vector2 size) : base(path, pos, size) {
-            //dead = false;
-            //hitDist = 35;
+        public Enemy(string path, Vector2 pos) : base(path, pos) {
+            
         }
 
         public virtual void AI(Player player) {

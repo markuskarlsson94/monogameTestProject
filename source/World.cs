@@ -9,7 +9,7 @@ namespace topdownShooter {
         public List<Enemy> enemies = new List<Enemy>();
 
         public World() {
-            player = new Player("sprPlayer", new Vector2(400, 200), new Vector2(16, 16));
+            player = new Player("sprPlayer", new Vector2(400, 200));
             GameGlobals.PassProjectile = AddProjectile;
             GameGlobals.PassEnemy = AddEnemy;
             Vector2 offset = new Vector2(0, 0);

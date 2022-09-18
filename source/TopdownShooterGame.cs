@@ -64,7 +64,7 @@ namespace topdownShooter
             gameFont = Content.Load<SpriteFont>("galleryFont");
 
             world = new World();
-            cursor = new Basic2d("cursor", Vector2.Zero, new Vector2(13, 13));
+            cursor = new Basic2d("cursor", Vector2.Zero);
         }
 
         protected override void Update(GameTime gameTime)

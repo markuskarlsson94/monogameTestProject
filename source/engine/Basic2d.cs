@@ -7,9 +7,9 @@ namespace topdownShooter {
         public Vector2 pos, size;
         public Texture2D texture;
 
-        public Basic2d(string path, Vector2 pos, Vector2 size) {
+        public Basic2d(string path, Vector2 pos) {
             this.pos = pos;
-            this.size = size;
+            //this.size = size;
             
             try {
                 texture = Globals.content.Load<Texture2D>(path);
@@ -17,6 +17,8 @@ namespace topdownShooter {
                 System.Console.WriteLine($"Could not load texture {e}");
                 //Game1.Exit();
             }
+
+            this.size = new Vector2(texture.Width, texture.Height);
         }
 
         public virtual void Update() {
