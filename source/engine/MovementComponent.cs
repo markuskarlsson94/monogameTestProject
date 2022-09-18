@@ -45,6 +45,10 @@ namespace topdownShooter {
         public void AddVel(Vector2 vel) {
             this.vel += vel;
         }
+
+        public void SetMaxSpeed(float max) {
+            maxVel = max;
+        }
     }
 
     public interface IMovementComponent {

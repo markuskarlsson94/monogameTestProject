@@ -10,6 +10,9 @@ namespace topdownShooter {
         public override void GetHit(Vector2 vel) {
             AddVel(vel);
 
+            movementComponent.SetAcc(new Vector2(0, 0));
+            hitTimer = hitTimerMax;
+
             hp -= 1;
             if (hp <= 0) {
                 remove = true;
