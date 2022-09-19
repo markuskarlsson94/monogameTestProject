@@ -8,7 +8,7 @@ namespace topdownShooter {
         }
 
         public override void GetHit(Vector2 vel) {
-            AddVel(vel);
+            AddExternalVel(vel);
 
             movementComponent.SetAcc(new Vector2(0, 0));
             hitTimer = hitTimerMax;

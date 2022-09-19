@@ -29,6 +29,10 @@ namespace topdownShooter
             movementComponent.AddVel(vel);
         }
 
+        public void AddExternalVel(Vector2 vel) {
+            movementComponent.AddExternalVel(vel);
+        }
+
         public override void Update() {
             //Input
             float horizontalInput = 0.0F;
