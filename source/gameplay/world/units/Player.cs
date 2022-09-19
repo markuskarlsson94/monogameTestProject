@@ -55,7 +55,7 @@ namespace topdownShooter
 
             movementComponent.SetAcc(inputVector*acc);
             movementComponent.Update(ref pos);
-            pos = Vector2.Clamp(pos, new Vector2(0, 0), new Vector2(Globals.screenWidth, Globals.screenHeightaaw));
+            pos = Vector2.Clamp(pos, new Vector2(0, 0), new Vector2(Globals.screenWidth, Globals.screenHeight));
 
             rot = Globals.RotateTowards(pos, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y));
 
