@@ -12,6 +12,10 @@ namespace topdownShooter {
         public bool paused;
 
         public World() {
+            Init();
+        }
+
+        public void Init() {
             player = new Player("sprPlayer", new Vector2(400, 200));
             GameGlobals.PassProjectile = AddProjectile;
             GameGlobals.PassEnemy = AddEnemy;
@@ -22,11 +26,18 @@ namespace topdownShooter {
             AddEnemy(new Enemy1(new Vector2(200, 200), player));
         }
 
+        public void Reset() {
+            projectiles.Clear();
+            enemies.Clear();
+            orbs.Clear();
+            player = null;
+        }
+
         public virtual void Update() {
             if (Globals.keyboard.GetPressed("P")) paused = !paused;
 
             if (!paused) {
-                player.Update();
+                player?.Update();
 
                 for (int i = 0; i < projectiles.Count; i++) {
                     Projectile p = projectiles[i];
@@ -84,7 +95,7 @@ namespace topdownShooter {
         }
 
         public virtual void Draw(Vector2 offset) {
-            player.Draw(offset);
+            player?.Draw(offset);
 
             foreach (Projectile p in projectiles) {
                 p.Draw(offset);
@@ -98,7 +109,7 @@ namespace topdownShooter {
                 o.Draw(offset);
             }
 
-            string ammoString = $"Ammo: {player.Ammo.ToString()}/{player.AmmoMax.ToString()}";
+            string ammoString = $"Ammo: {player?.Ammo.ToString()}/{player?.AmmoMax.ToString()}";
             Globals.spriteBatch.DrawString(Globals.gameFont, ammoString , new Vector2(10, 10), Color.White);
         }
     }

@@ -68,8 +68,9 @@ namespace topdownShooter
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) {
                 Exit();
+            }
 
             //mouseState = Mouse.GetState();
             /*if (mouseState.LeftButton == ButtonState.Pressed && mouseReleased) {
@@ -89,10 +90,16 @@ namespace topdownShooter
                 mouseReleased = true;
             }*/
 
-            //player.Update(gameTime);
             Globals.gameTime = gameTime;
             Globals.keyboard.Update();
             Globals.mouse.Update();
+
+            if (Globals.keyboard.GetPressed("R")) {
+                System.Console.WriteLine("reset");
+                world.Reset();
+                world.Init();
+            }
+
             world.Update();
             Globals.keyboard.UpdateOld();
             Globals.mouse.UpdateOld();
