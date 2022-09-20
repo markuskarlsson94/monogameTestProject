@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 
 namespace topdownShooter {
-    public class Orb :GameObject {
+    public class Orb :GameObject, IMovementComponent {
         private Player player;
         private MovementComponent movementComponent;
         private float distanceThreshold = 128f;
@@ -31,6 +31,14 @@ namespace topdownShooter {
             movementComponent.Update(ref pos);
 
             base.Update();
+        }
+
+        public void AddVel(Vector2 vel) {
+            movementComponent.AddVel(vel);
+        }
+
+        public void AddExternalVel(Vector2 vel) {
+            movementComponent.AddExternalVel(vel);
         }
     }
 }
