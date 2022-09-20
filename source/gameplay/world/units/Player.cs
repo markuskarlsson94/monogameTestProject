@@ -84,7 +84,7 @@ namespace topdownShooter
                     
                     dir.Normalize();
                     dir = -dir;
-                    AddVel(dir);
+                    AddExternalVel(dir);
                 }
             }
 
