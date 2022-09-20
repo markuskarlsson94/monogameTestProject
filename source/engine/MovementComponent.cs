@@ -6,14 +6,16 @@ namespace topdownShooter {
         private Vector2 acc;
         private Vector2 vel;
         private Vector2 externalVel;
-        private float maxVel;
+        private float maxSpeed;
+        private float maxExtSpeed;
         private float friction;
 
         public MovementComponent() {
             acc = new Vector2();
             vel = new Vector2();
             externalVel = new Vector2();
-            maxVel = 3;
+            maxSpeed = 3f;
+            maxExtSpeed = 6f;
             friction = 0.2f;
         }
 
@@ -21,9 +23,15 @@ namespace topdownShooter {
             vel += acc;
 
             float curVel = vel.Length();
-            if (curVel > maxVel) {
+            if (curVel > maxSpeed) {
                 vel.Normalize();
-                vel *= maxVel;
+                vel *= maxSpeed;
+            }
+
+            float extSpeed = externalVel.Length();
+            if (extSpeed > maxExtSpeed) {
+                externalVel.Normalize();
+                externalVel *= maxExtSpeed;
             }
 
             Vector2 totalVel = vel + externalVel;
@@ -56,7 +64,11 @@ namespace topdownShooter {
         }
 
         public void SetMaxSpeed(float max) {
-            maxVel = max;
+            maxSpeed = max;
+        }
+
+        public void SetMaxExtSpeed(float max) {
+            maxExtSpeed = max;
         }
 
         public void SetFriction(float friction) {
