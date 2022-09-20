@@ -7,12 +7,12 @@ namespace topdownShooter {
             rot = owner.rot + Globals.DegToRad(270);
         }
 
-        public override void Update(List<GameObject> units) {
-            base.Update(units);
+        public override void Update(List<GameObject> objects) {
+            base.Update(objects);
         } 
 
-        public override bool HitSomething(List<GameObject> units) {
-            return base.HitSomething(units);
+        public override bool HitSomething(List<GameObject> objects) {
+            return base.HitSomething(objects);
         }
 
         public override void Draw(Vector2 offset) {

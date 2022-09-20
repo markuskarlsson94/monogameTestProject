@@ -32,13 +32,11 @@ namespace topdownShooter {
             }
         } 
 
-        public virtual bool HitSomething(List<GameObject> units) {
-            foreach (GameObject u in units) {
-                if (Vector2.Distance(pos, u.pos) < u.hitDistance) {
-                    System.Console.WriteLine(u);
-
+        public virtual bool HitSomething(List<GameObject> objects) {
+            foreach (GameObject obj in objects) {
+                if (Vector2.Distance(pos, obj.pos) < obj.hitDistance) {
                     Vector2 v = Vector2.Normalize(direction)*hitSpeed;
-                    u.GetHit(v);
+                    obj.GetHit(v);
                     return true;
                 }
             }
