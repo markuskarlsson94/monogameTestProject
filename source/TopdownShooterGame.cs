@@ -48,7 +48,6 @@ namespace topdownShooter
             Globals.mouse.Update();
 
             if (Globals.keyboard.GetPressed("R")) {
-                System.Console.WriteLine("reset");
                 world.Reset();
                 world.Init();
             }
