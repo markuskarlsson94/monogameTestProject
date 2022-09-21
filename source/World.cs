@@ -8,6 +8,7 @@ namespace topdownShooter {
         public List<Projectile> projectiles = new List<Projectile>();
         public List<Enemy> enemies = new List<Enemy>();
         public List<Orb> orbs = new List<Orb>();
+        public EnemySpawner enemySpawner;
 
         public bool paused;
 
@@ -17,6 +18,7 @@ namespace topdownShooter {
 
         public void Init() {
             player = new Player("sprPlayer", new Vector2(400, 200));
+            enemySpawner = new EnemySpawner(player);
             GameGlobals.PassProjectile = AddProjectile;
             GameGlobals.PassEnemy = AddEnemy;
             GameGlobals.PassOrb = AddOrb;
@@ -38,6 +40,7 @@ namespace topdownShooter {
 
             if (!paused) {
                 player?.Update();
+                enemySpawner.Update();
 
                 for (int i = 0; i < projectiles.Count; i++) {
                     Projectile p = projectiles[i];
