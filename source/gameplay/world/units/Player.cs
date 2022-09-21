@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework;
 namespace topdownShooter
 {
     public class Player : GameObject, IMovementComponent {
+        private int hpMax = 4;
+        private int hp;
         private float canShootTimerMax = 20f;
         private float canShootTimer;
         private float ammoMax = 3;
@@ -14,10 +16,13 @@ namespace topdownShooter
         //Properties
         public float Ammo => ammo;
         public float AmmoMax => ammoMax;
+        public float Hp => hp;
+        public float HpMax => hpMax;
 
         private MovementComponent movementComponent;
 
         public Player(string path, Vector2 pos) : base(path, pos) {
+            hp = hpMax;
             canShootTimer = 0;
             ammo = ammoMax;
             ammoTimer = ammoTimerMax;

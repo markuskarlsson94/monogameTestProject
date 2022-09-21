@@ -110,8 +110,12 @@ namespace topdownShooter {
                 o.Draw(offset);
             }
 
-            string ammoString = $"Ammo: {player?.Ammo.ToString()}/{player?.AmmoMax.ToString()}";
-            Globals.spriteBatch.DrawString(Globals.gameFont, ammoString , new Vector2(10, 10), Color.White);
+            if (player != null) {
+                string hpString = $"HP: {player.Hp.ToString()}/{player.HpMax.ToString()}";
+                string ammoString = $"Ammo: {player.Ammo.ToString()}/{player.AmmoMax.ToString()}";
+                Globals.spriteBatch.DrawString(Globals.gameFont, hpString , new Vector2(10, 10), Color.White);
+                Globals.spriteBatch.DrawString(Globals.gameFont, ammoString , new Vector2(10, 30), Color.White);
+            }
         }
     }
 }
