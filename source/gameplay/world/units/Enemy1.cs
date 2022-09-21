@@ -19,6 +19,7 @@ namespace topdownShooter {
                 Orb orb = new Orb(pos, player);
                 orb.AddExternalVel(vel);
                 GameGlobals.PassOrb(orb);
+                GameGlobals.IncreaseScore();
             }
         }
     }

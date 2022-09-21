@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
 namespace topdownShooter {
+    public delegate void Call();
     public delegate void PassObject(object obj);
     public delegate object PassObjectAndReturn(object obj);
 
