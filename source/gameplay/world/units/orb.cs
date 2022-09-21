@@ -9,7 +9,7 @@ namespace topdownShooter {
         public Orb(Vector2 pos, Player player) : base("sprOrb", pos) {
             this.player = player;
             movementComponent = new MovementComponent();
-            movementComponent.SetMaxSpeed(10f);
+            movementComponent.SetMaxSpeed(5f);
             movementComponent.SetFriction(0.1f);
         }
 
@@ -24,7 +24,7 @@ namespace topdownShooter {
                 dir.Normalize();
 
                 float frac = 1f - (dist/distanceThreshold);
-                movementComponent.AddVel(dir*frac*1.5f);
+                movementComponent.AddVel(dir*frac*1f);
             }
 
             movementComponent.SetAcc(acc);
