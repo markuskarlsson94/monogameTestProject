@@ -24,8 +24,6 @@ namespace topdownShooter {
             GameGlobals.PassOrb = AddOrb;
             Vector2 offset = new Vector2(0, 0);
             paused = false;
-
-            AddEnemy(new Enemy1(new Vector2(200, 200), player));
         }
 
         public void Reset() {
