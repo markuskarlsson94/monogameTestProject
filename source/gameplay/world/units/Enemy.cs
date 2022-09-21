@@ -28,13 +28,16 @@ namespace topdownShooter {
         }
 
         public override void Update() {
+            float playerDis = Vector2.Distance(pos, player.pos);
+
             if (hitTimer <= 0) {
-                if (Vector2.Distance(pos, player.pos) > 16) {
+                if (playerDis > 10) {
                     var dir = player.pos - pos;
                     dir.Normalize();
                     movementComponent.SetAcc(dir*acc);
                 } else {
                     movementComponent.SetAcc(new Vector2(0, 0));
+                    player.Hurt();
                 }
             } else {
                 hitTimer -= 1f;

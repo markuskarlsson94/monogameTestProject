@@ -5,6 +5,8 @@ namespace topdownShooter
     public class Player : GameObject, IMovementComponent {
         private int hpMax = 4;
         private int hp;
+        private float hurtTimerMax = 60f;
+        private float hurtTimer;
         private float canShootTimerMax = 20f;
         private float canShootTimer;
         private float ammoMax = 3;
@@ -23,6 +25,7 @@ namespace topdownShooter
 
         public Player(string path, Vector2 pos) : base(path, pos) {
             hp = hpMax;
+            hurtTimer = 0;
             canShootTimer = 0;
             ammo = ammoMax;
             ammoTimer = ammoTimerMax;
@@ -36,6 +39,13 @@ namespace topdownShooter
 
         public void AddExternalVel(Vector2 vel) {
             movementComponent.AddExternalVel(vel);
+        }
+
+        public void Hurt() {
+            if (hurtTimer <= 0f) {
+                hurtTimer = hurtTimerMax;
+                --hp;
+            }
         }
 
         public override void Update() {
@@ -91,6 +101,11 @@ namespace topdownShooter
                     dir = -dir;
                     AddExternalVel(dir);
                 }
+            }
+
+            //Hurt timer
+            if (hurtTimer >= 0) {
+                hurtTimer -= 1f;
             }
 
             base.Update();
