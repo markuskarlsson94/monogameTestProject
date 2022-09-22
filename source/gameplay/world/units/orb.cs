@@ -19,6 +19,7 @@ namespace topdownShooter {
 
             if (dist < 10f) {
                 remove = true;
+                GameGlobals.IncreaseXp();
             } else if (dist < distanceThreshold) {
                 var dir = player.pos - pos;
                 dir.Normalize();
