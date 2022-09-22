@@ -1,10 +1,12 @@
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace topdownShooter {
     public class Enemy : GameObject {
         public float speed;
         public float hp;
         protected float hitTimer, hitTimerMax;
+        private float moveAwayTimer, moveAwayTimerMax = 4f;
         protected float acc = 0.25f;
         protected float speedMax = 1;
         protected MovementComponent movementComponent;
@@ -16,6 +18,7 @@ namespace topdownShooter {
             movementComponent.SetFriction(0.1f);
             hitTimer = 0;
             hitTimerMax = 30f;
+            moveAwayTimer = 0;
             this.player = player;
         }
 
@@ -67,8 +70,28 @@ namespace topdownShooter {
                 StopMoving();
             }
 
+            moveAwayTimer -= 1f;
+            if (moveAwayTimer <= 0) {
+                moveAwayTimer = moveAwayTimerMax;
+                MoveAwayFromEnemies();
+            }
+            
             movementComponent.Update(ref pos);
             base.Update();
+        }
+
+        private void MoveAwayFromEnemies() {
+            List<Enemy> enemies = (List<Enemy>)GameGlobals.GetEnemies();
+
+            foreach (Enemy enemy in enemies) {
+                if (enemy == this) continue;
+
+                Vector2 diff = enemy.pos - pos;
+                if (diff.Length() < 12f) {
+                    diff.Normalize();
+                    AddVel(-diff);
+                }
+            }
         }
 
         public override void Draw(Vector2 offset) {

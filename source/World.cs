@@ -29,6 +29,7 @@ namespace topdownShooter {
             GameGlobals.PassOrb = AddOrb;
             GameGlobals.IncreaseScore = IncreaseScore;
             GameGlobals.IncreaseXp = IncreaseXp;
+            GameGlobals.GetEnemies = GetEnemies;
 
             Vector2 offset = new Vector2(0, 0);
             paused = false;
@@ -112,6 +113,10 @@ namespace topdownShooter {
                 xp = 0;
                 xpMax += 1;
             }
+        }
+
+        public List<Enemy> GetEnemies() {
+            return enemies;
         }
 
         public virtual void Draw(Vector2 offset) {

@@ -5,5 +5,6 @@ namespace topdownShooter {
         public static PassObject PassOrb;
         public static Call IncreaseScore;
         public static Call IncreaseXp;
+        public static CallAndReturn GetEnemies;
     }
 }
