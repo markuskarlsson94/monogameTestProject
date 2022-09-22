@@ -10,7 +10,7 @@ namespace topdownShooter {
         public List<Orb> orbs = new List<Orb>();
         public EnemySpawner enemySpawner;
         public int score;
-        public int xp;
+        public int xp, xpMax;
         public bool paused;
 
         public World() {
@@ -22,6 +22,7 @@ namespace topdownShooter {
             enemySpawner = new EnemySpawner(player);
             score = 0;
             xp = 0;
+            xpMax = 4;
 
             GameGlobals.PassProjectile = AddProjectile;
             GameGlobals.PassEnemy = AddEnemy;
@@ -107,7 +108,10 @@ namespace topdownShooter {
         }
 
         public virtual void IncreaseXp() {
-            ++xp;
+            if (++xp >= xpMax) {
+                xp = 0;
+                xpMax += 1;
+            }
         }
 
         public virtual void Draw(Vector2 offset) {
@@ -129,7 +133,7 @@ namespace topdownShooter {
                 string hpString = $"HP: {player.Hp.ToString()}/{player.HpMax.ToString()}";
                 string ammoString = $"Ammo: {player.Ammo.ToString()}/{player.AmmoMax.ToString()}";
                 string scoreString = $"Score: {score}";
-                string xpString = $"Xp: {xp}";
+                string xpString = $"Xp: {xp}/{xpMax}";
 
                 Globals.spriteBatch.DrawString(Globals.gameFont, hpString , new Vector2(10, 10), Color.White);
                 Globals.spriteBatch.DrawString(Globals.gameFont, ammoString , new Vector2(10, 30), Color.White);
