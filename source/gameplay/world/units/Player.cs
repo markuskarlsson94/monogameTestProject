@@ -48,64 +48,70 @@ namespace topdownShooter
             }
         }
 
+        public bool IsAlive() {
+            return hp > 0;
+        }
+
         public override void Update() {
-            //Input
-            float horizontalInput = 0.0F;
-            if (Globals.keyboard.GetPress("D")) {
-                horizontalInput += 1.0F;
-            } else if (Globals.keyboard.GetPress("A")) {
-                horizontalInput -= 1.0F;
-            }
+            if (IsAlive()) {
+                //Input
+                float horizontalInput = 0.0F;
+                if (Globals.keyboard.GetPress("D")) {
+                    horizontalInput += 1.0F;
+                } else if (Globals.keyboard.GetPress("A")) {
+                    horizontalInput -= 1.0F;
+                }
 
-            float verticalInput = 0.0F;
-            if (Globals.keyboard.GetPress("S")) {
-                verticalInput += 1.0F;
-            } else if (Globals.keyboard.GetPress("W")) {
-                verticalInput -= 1.0F;
-            }
+                float verticalInput = 0.0F;
+                if (Globals.keyboard.GetPress("S")) {
+                    verticalInput += 1.0F;
+                } else if (Globals.keyboard.GetPress("W")) {
+                    verticalInput -= 1.0F;
+                }
 
-            //Movement
-            Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
-            if (inputVector.Length() > 0) inputVector.Normalize();
+                //Movement
+                Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
+                if (inputVector.Length() > 0) inputVector.Normalize();
 
-            movementComponent.SetAcc(inputVector*acc);
-            movementComponent.Update(ref pos);
-            pos = Vector2.Clamp(pos, new Vector2(0, 0), new Vector2(Globals.screenWidth, Globals.screenHeight));
+                movementComponent.SetAcc(inputVector*acc);
+                movementComponent.Update(ref pos);
+                pos = Vector2.Clamp(pos, new Vector2(0, 0), new Vector2(Globals.screenWidth, Globals.screenHeight));
 
-            rot = Globals.RotateTowards(pos, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y));
+                rot = Globals.RotateTowards(pos, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y));
 
-            //Shooting
-            if (canShootTimer > 0) {
-                canShootTimer -= 1f;
-            }
+                //Shooting
+                if (canShootTimer > 0) {
+                    canShootTimer -= 1f;
+                }
 
-            if (ammo <= 0) {
-                if (ammoTimer > 0) {
-                    ammoTimer -= 1f;
+                if (ammo <= 0) {
+                    if (ammoTimer > 0) {
+                        ammoTimer -= 1f;
 
-                    if (ammoTimer <= 0) {
-                        ammoTimer = ammoTimerMax;
-                        ammo = ammoMax;
+                        if (ammoTimer <= 0) {
+                            ammoTimer = ammoTimerMax;
+                            ammo = ammoMax;
+                        }
                     }
                 }
-            }
 
-            if (Globals.mouse.LeftClickHold()) {
-                if (canShootTimer <= 0 && ammo > 0) {
-                    Vector2 dir = Globals.mouse.newMousePos - pos;
-                    GameGlobals.PassProjectile(new PlayerProjectile(pos, this, dir));
-                    canShootTimer = canShootTimerMax;
-                    ammo -= 1;
-                    
-                    dir.Normalize();
-                    dir = -dir;
-                    AddExternalVel(dir);
+                if (Globals.mouse.LeftClickHold()) {
+                    if (canShootTimer <= 0 && ammo > 0) {
+                        Vector2 dir = Globals.mouse.newMousePos - pos;
+                        GameGlobals.PassProjectile(new PlayerProjectile(pos, this, dir));
+                        canShootTimer = canShootTimerMax;
+                        ammo -= 1;
+                        
+                        dir.Normalize();
+                        dir = -dir;
+                        AddExternalVel(dir);
+                    }
                 }
-            }
 
-            //Hurt timer
-            if (hurtTimer >= 0) {
-                hurtTimer -= 1f;
+                //Hurt timer
+                if (hurtTimer >= 0) {
+                    hurtTimer -= 1f;
+                }
             }
 
             base.Update();

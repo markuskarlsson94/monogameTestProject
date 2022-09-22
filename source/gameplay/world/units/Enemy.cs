@@ -43,20 +43,28 @@ namespace topdownShooter {
             }
         }
 
-        public override void Update() {
-            float playerDis = Vector2.Distance(pos, player.pos);
+        public void StopMoving() {
+            movementComponent.SetAcc(new Vector2(0, 0));
+        }
 
-            if (hitTimer <= 0) {
-                if (playerDis > 10) {
-                    var dir = player.pos - pos;
-                    dir.Normalize();
-                    movementComponent.SetAcc(dir*acc);
+        public override void Update() {
+            if (player.IsAlive()) {
+                float playerDis = Vector2.Distance(pos, player.pos);
+
+                if (hitTimer <= 0) {
+                    if (playerDis > 10) {
+                        var dir = player.pos - pos;
+                        dir.Normalize();
+                        movementComponent.SetAcc(dir*acc);
+                    } else {
+                        StopMoving();
+                        player.Hurt();
+                    }
                 } else {
-                    movementComponent.SetAcc(new Vector2(0, 0));
-                    player.Hurt();
+                    hitTimer -= 1f;
                 }
             } else {
-                hitTimer -= 1f;
+                StopMoving();
             }
 
             movementComponent.Update(ref pos);

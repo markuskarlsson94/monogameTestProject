@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace topdownShooter {
     public class EnemySpawner {
-        private float timerMax = 180f;
+        private float timerMax = 240f;
         private float timer;
         private Player player;
         private Vector2 centerPos;
@@ -17,15 +17,17 @@ namespace topdownShooter {
         }
 
         public void Update() {
-            timer -= 1f;
+            if (player.IsAlive()) {
+                timer -= 1f;
 
-            if (timer <= 0f) {
-                timer = timerMax;
-                Vector2 spawnVec = new Vector2(400, 0);
+                if (timer <= 0f) {
+                    timer = timerMax;
+                    Vector2 spawnVec = new Vector2(400, 0);
 
-                float dir = random.Next(360);
-                spawnVec = Utility.Vector2Rotated(spawnVec, dir);
-                GameGlobals.PassEnemy(new Enemy1(centerPos + spawnVec, player));
+                    float dir = random.Next(360);
+                    spawnVec = Utility.Vector2Rotated(spawnVec, dir);
+                    GameGlobals.PassEnemy(new Enemy1(centerPos + spawnVec, player));
+                }
             }
         }
     }
