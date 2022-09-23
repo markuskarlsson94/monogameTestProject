@@ -13,7 +13,7 @@ namespace topdownShooter {
             List<Enemy> enemies = (List<Enemy>)GameGlobals.GetEnemies();
 
             foreach (GameObject obj in enemies) {
-                if (Vector2.Distance(pos, obj.pos) < obj.collisionRadius) {
+                if (CollidingWith(obj)) {
                     Vector2 v = Vector2.Normalize(direction)*hitSpeed;
                     obj.GetHit(v);
                     return true;

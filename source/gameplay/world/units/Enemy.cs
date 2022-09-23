@@ -52,10 +52,8 @@ namespace topdownShooter {
 
         public override void Update() {
             if (player.IsAlive()) {
-                float playerDis = Vector2.Distance(pos, player.pos);
-
                 if (hitTimer <= 0) {
-                    if (playerDis > 10) {
+                    if (!CollidingWith(player)) {
                         var dir = player.pos - pos;
                         dir.Normalize();
                         movementComponent.SetAcc(dir*acc);
@@ -86,10 +84,10 @@ namespace topdownShooter {
             foreach (Enemy enemy in enemies) {
                 if (enemy == this) continue;
 
-                Vector2 diff = enemy.pos - pos;
-                if (diff.Length() < 12f) {
+                if (CollidingWith(enemy)) {
+                    Vector2 diff = enemy.pos - pos;
                     diff.Normalize();
-                    AddVel(-diff);
+                    AddVel(-diff/2);
                 }
             }
         }
