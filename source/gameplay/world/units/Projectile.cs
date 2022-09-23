@@ -17,17 +17,18 @@ namespace topdownShooter {
             timer = new GameTimer(1000);
         }
 
-        public virtual void Update(List<GameObject> objects) {
+        public override void Update() {
             pos += direction*speed;
 
             timer.UpdateTimer();
 
-            if (timer.HasExpired() || HitSomething(objects)) {
+            if (timer.HasExpired() || HitSomething()) {
                 Remove();
             }
         } 
 
-        public virtual bool HitSomething(List<GameObject> objects) {
+        //public virtual bool HitSomething(List<GameObject> objects) {
+        public virtual bool HitSomething() {
             return false;
         }
 

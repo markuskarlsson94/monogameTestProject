@@ -56,7 +56,7 @@ namespace topdownShooter {
                         projectiles.RemoveAt(i);
                         i--;
                     } else {
-                        p.Update(enemies.ToList<GameObject>());
+                        p.Update();
                     }
                 }
 

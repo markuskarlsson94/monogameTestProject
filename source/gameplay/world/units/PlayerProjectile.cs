@@ -9,12 +9,10 @@ namespace topdownShooter {
             rot = owner.rot + Globals.DegToRad(270);
         }
 
-        public override void Update(List<GameObject> objects) {
-            base.Update(objects);
-        } 
+        public override bool HitSomething() {
+            List<Enemy> enemies = (List<Enemy>)GameGlobals.GetEnemies();
 
-        public override bool HitSomething(List<GameObject> objects) {
-            foreach (GameObject obj in objects) {
+            foreach (GameObject obj in enemies) {
                 if (Vector2.Distance(pos, obj.pos) < obj.collisionRadius) {
                     Vector2 v = Vector2.Normalize(direction)*hitSpeed;
                     obj.GetHit(v);
