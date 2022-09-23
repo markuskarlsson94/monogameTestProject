@@ -15,7 +15,7 @@ namespace topdownShooter {
 
         public override bool HitSomething(List<GameObject> objects) {
             foreach (GameObject obj in objects) {
-                if (Vector2.Distance(pos, obj.pos) < obj.hitDistance) {
+                if (Vector2.Distance(pos, obj.pos) < obj.collisionRadius) {
                     Vector2 v = Vector2.Normalize(direction)*hitSpeed;
                     obj.GetHit(v);
                     return true;
