@@ -27,7 +27,6 @@ namespace topdownShooter {
             }
         } 
 
-        //public virtual bool HitSomething(List<GameObject> objects) {
         public virtual bool HitSomething() {
             return false;
         }
