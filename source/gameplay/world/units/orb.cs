@@ -1,13 +1,15 @@
 using Microsoft.Xna.Framework;
 
 namespace topdownShooter {
-    public class Orb :GameObject, IMovementComponent {
+    public class Orb : GameObject, IMovementComponent {
         private Player player;
         private MovementComponent movementComponent;
         private float distanceThreshold = 128f;
+        private float lifeTimer;
 
         public Orb(Vector2 pos, Player player) : base("sprOrb", pos) {
             this.player = player;
+            lifeTimer = 480;
             movementComponent = new MovementComponent();
             movementComponent.SetMaxSpeed(5f);
             movementComponent.SetFriction(0.1f);
@@ -30,6 +32,11 @@ namespace topdownShooter {
 
             movementComponent.SetAcc(acc);
             movementComponent.Update(ref pos);
+
+            lifeTimer -= 1f;
+            if (lifeTimer <= 0) {
+                remove = true;
+            }
 
             base.Update();
         }
