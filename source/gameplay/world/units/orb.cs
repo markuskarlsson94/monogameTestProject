@@ -20,7 +20,7 @@ namespace topdownShooter {
             Vector2 acc = new Vector2(0, 0);
 
             if (dist < 10f) {
-                remove = true;
+                Remove();
                 GameGlobals.IncreaseXp();
             } else if (dist < distanceThreshold) {
                 var dir = player.pos - pos;
@@ -35,7 +35,7 @@ namespace topdownShooter {
 
             lifeTimer -= 1f;
             if (lifeTimer <= 0) {
-                remove = true;
+                Remove();
             }
 
             base.Update();

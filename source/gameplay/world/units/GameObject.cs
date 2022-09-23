@@ -17,6 +17,10 @@ namespace topdownShooter {
 
         }
 
+        public virtual void Remove() {
+            remove = true;
+        }
+
         public override void Draw(Vector2 offset) {
             base.Draw(offset);
         }
