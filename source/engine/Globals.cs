@@ -11,7 +11,7 @@ namespace topdownShooter {
 
     class Globals {
         public static int screenHeight, screenWidth;
-
+        public static GraphicsDevice graphicsDevice;
         public static ContentManager content;
         public static SpriteBatch spriteBatch;
         public static GameKeyboard keyboard;

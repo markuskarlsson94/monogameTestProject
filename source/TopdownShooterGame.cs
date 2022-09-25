@@ -33,6 +33,7 @@ namespace topdownShooter
             Globals.keyboard = new GameKeyboard();
             Globals.mouse = new GameMouse();
             Globals.gameFont = Content.Load<SpriteFont>("galleryFont");
+            Globals.graphicsDevice = GraphicsDevice;
 
             world = new World();
             cursor = new Basic2d("cursor", Vector2.Zero);
@@ -66,6 +67,9 @@ namespace topdownShooter
             world.Draw(Vector2.Zero);
             cursor.Draw(new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(6, 6));
             Globals.spriteBatch.End();
+
+            DrawFunctions.DrawLine(300, 200, 400, 220);
+            DrawFunctions.DrawRectangle(100, 100, 160, 130, true);
 
             base.Draw(gameTime);
         }
