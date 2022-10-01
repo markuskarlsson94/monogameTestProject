@@ -495,22 +495,51 @@ namespace topdownShooter {
     }
 
     public class Primitive2D : Shape2D {
-        private PrimitiveType primType;
+        public PrimitiveType PrimitiveType {
+            get { return primitiveType; }
 
-        public Primitive2D(PrimitiveType type, Color color) : base(color) {
-            primType = type;
+            set {
+                primitiveType = value;
+                Update();
+            }
         }
 
-        public void AddVertex() {
+        public VertexPositionColor[] Vertices {
+            get { return vertices; }
 
+            set {
+                vertices = value;
+                Update();
+            }
+        }
+
+        public VertexPositionColor this[int i] {
+            get { return vertices[i]; }
+
+            set {
+                vertices[i] = value;
+                Update();
+            }
+        }
+
+        public Primitive2D(PrimitiveType type, VertexPositionColor[] vertices) : base(default(Color)) {
+            primitiveType = type;
+            this.vertices = vertices;
+            Update();
         }
 
         protected override void Update() {
+            int count = vertices.Length;
 
+            if (primitiveType == PrimitiveType.TriangleList) {
+                primitiveCount = (int)Math.Floor((decimal)count/3);
+            } else if (primitiveType == PrimitiveType.TriangleStrip) {
+                primitiveCount = count - 2;
+            } else if (primitiveType == PrimitiveType.LineList) {
+                primitiveCount = (int)Math.Ceiling((decimal)count/2);
+            } else {
+                primitiveCount = count - 1; //LineStrip
+            }
         }
-
-        /*public void Draw() {
-
-        }*/
     }
 }
