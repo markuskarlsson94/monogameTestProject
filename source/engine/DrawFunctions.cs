@@ -392,18 +392,105 @@ namespace topdownShooter {
             float ang = (float)Math.PI*2f;
             float angIncrement = (float)(2*Math.PI/segments);
 
-            for (int i = 0; i < vertexCount - 2; i += 2) {
-                float xInner = p.X + (float)Math.Cos(ang)*innerRadius;
-                float yInner = p.Y + (float)Math.Sin(ang)*innerRadius;
-                float xOuter = p.X + (float)Math.Cos(ang)*outerRadius;
-                float yOuter = p.Y + (float)Math.Sin(ang)*outerRadius;
+            for (int i = 0; i < vertexCount; i += 2) {
+                float cos = (float)Math.Cos(ang);
+                float sin = (float)Math.Sin(ang);
+                float innerRad = Math.Min(innerRadius, outerRadius);
+                float outerRad = Math.Max(innerRadius, outerRadius);
+                ang -= angIncrement;
+
+                float xInner = p.X + cos*innerRad;
+                float yInner = p.Y + sin*innerRad;
+                float xOuter = p.X + cos*outerRad;
+                float yOuter = p.Y + sin*outerRad;
+
                 vertices[i] = new VertexPositionColor(new Vector3(xOuter, yOuter, 0), color);
                 vertices[i + 1] = new VertexPositionColor(new Vector3(xInner, yInner, 0), color);
-                ang -= angIncrement;
             }
+        }
+    }
 
-            vertices[vertexCount - 1] = new VertexPositionColor(new Vector3(p.X + outerRadius, p.Y, 0), color);
-            vertices[vertexCount] = new VertexPositionColor(new Vector3(p.X + innerRadius, p.Y, 0), color);
+    public class Triangle2D : Shape2D {
+        private Vector2 p0, p1, p2;
+        private bool filled;
+
+        public Vector2 P0 {
+            get { return p0; }
+
+            set {
+                p0 = value;
+                Update();
+            }
+        }
+
+        public Vector2 P1 {
+            get { return p1; }
+
+            set {
+                p1 = value;
+                Update();
+            }
+        }
+
+        public Vector2 P2 {
+            get { return p2; }
+
+            set {
+                p2 = value;
+                Update();
+            }
+        }
+
+        public bool Filled {
+            get { return filled; }
+
+            set {
+                filled = value;
+                Update();
+            }
+        }
+
+        public Triangle2D(Vector2 p0, Vector2 p1, Vector2 p2, bool filled, Color color = default(Color)) : base(color) {
+            this.p0 = p0;
+            this.p1 = p1;
+            this.p2 = p2;
+            this.filled = filled;
+            Update();
+        }
+
+        protected override void Update() {
+            if (filled) {
+                primitiveType = PrimitiveType.TriangleStrip;
+                primitiveCount = 1;
+
+                if (isClockwise()) {
+                    vertices = new VertexPositionColor[] {
+                        new VertexPositionColor(new Vector3(p2, 0), color),
+                        new VertexPositionColor(new Vector3(p1, 0), color),
+                        new VertexPositionColor(new Vector3(p0, 0), color)
+                    };
+                } else {
+                    vertices = new VertexPositionColor[] {
+                        new VertexPositionColor(new Vector3(p0, 0), color),
+                        new VertexPositionColor(new Vector3(p1, 0), color),
+                        new VertexPositionColor(new Vector3(p2, 0), color)
+                    };
+                }
+            } else {
+                primitiveType = PrimitiveType.LineStrip;
+                primitiveCount = 3;
+
+                vertices = new VertexPositionColor[] {
+                    new VertexPositionColor(new Vector3(p0, 0), color),
+                    new VertexPositionColor(new Vector3(p1, 0), color),
+                    new VertexPositionColor(new Vector3(p2, 0), color),
+                    new VertexPositionColor(new Vector3(p0, 0), color)
+                };
+            }
+        }
+
+        private bool isClockwise() {
+            return ((p1.Y - p0.Y) * (p2.X - p1.X) - (p1.X - p0.X) * (p2.Y - p1.Y)) > 0;
         }
     }
 
