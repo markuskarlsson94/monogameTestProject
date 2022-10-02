@@ -9,9 +9,10 @@ namespace topdownShooter {
         public List<Enemy> enemies = new List<Enemy>();
         public List<Orb> orbs = new List<Orb>();
         public EnemySpawner enemySpawner;
-        public int score;
-        public int xp, xpMax;
         public bool paused;
+        public int score;
+        public int xp, xpMax, level;
+        private HUD hud;
 
         public World() {
             Init();
@@ -23,6 +24,7 @@ namespace topdownShooter {
             score = 0;
             xp = 0;
             xpMax = 4;
+            level = 1;
 
             GameGlobals.PassProjectile = AddProjectile;
             GameGlobals.PassEnemy = AddEnemy;
@@ -33,6 +35,8 @@ namespace topdownShooter {
 
             Vector2 offset = new Vector2(0, 0);
             paused = false;
+
+            hud = new HUD(this);
         }
 
         public void Reset() {
@@ -112,6 +116,7 @@ namespace topdownShooter {
             if (++xp >= xpMax) {
                 xp = 0;
                 xpMax += 1;
+                ++level;
             }
         }
 
@@ -134,17 +139,7 @@ namespace topdownShooter {
                 o.Draw(offset);
             }
 
-            if (player != null) {
-                string hpString = $"HP: {player.Hp.ToString()}/{player.HpMax.ToString()}";
-                string ammoString = $"Ammo: {player.Ammo.ToString()}/{player.AmmoMax.ToString()}";
-                string scoreString = $"Score: {score}";
-                string xpString = $"Xp: {xp}/{xpMax}";
-
-                Globals.spriteBatch.DrawString(Globals.gameFont, hpString , new Vector2(10, 10), Color.White);
-                Globals.spriteBatch.DrawString(Globals.gameFont, ammoString , new Vector2(10, 30), Color.White);
-                Globals.spriteBatch.DrawString(Globals.gameFont, scoreString , new Vector2(10, 50), Color.White);
-                Globals.spriteBatch.DrawString(Globals.gameFont, xpString , new Vector2(10, 70), Color.White);
-            }
+            hud.Draw();
         }
     }
 }
