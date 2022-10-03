@@ -24,7 +24,7 @@ namespace topdownShooter {
                 string hpString = $"HP: {player.Hp.ToString()}/{player.HpMax.ToString()}";
                 string ammoString = $"Ammo: {player.Ammo.ToString()}/{player.AmmoMax.ToString()}";
                 string scoreString = $"Score: {world.score}";
-                string xpString = $"Level: {world.level} ({world.xp}/{world.xpMax})";
+                string xpString = $"Level {world.level} ({world.xp}/{world.xpMax})";
 
                 Globals.spriteBatch.DrawString(Globals.gameFont, hpString , new Vector2(10, 10), Color.White);
                 Globals.spriteBatch.DrawString(Globals.gameFont, ammoString , new Vector2(10, 30), Color.White);
