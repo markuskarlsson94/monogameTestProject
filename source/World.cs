@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace topdownShooter {
     public class World {
@@ -12,7 +13,7 @@ namespace topdownShooter {
         public bool paused;
         public int score;
         public int xp, xpMax, level;
-        private HUD hud;
+        public HUD hud;
 
         public World() {
             Init();
@@ -94,7 +95,10 @@ namespace topdownShooter {
                         p.Update(null);
                     }
                 }*/
+
             }
+
+            hud.Update();
         }
 
         public virtual void Draw2() {
@@ -122,7 +126,14 @@ namespace topdownShooter {
                 xp = 0;
                 xpMax += 1;
                 ++level;
+
+                hud.CreatePowerupSelection();
+                paused = true;
             }
+        }
+
+        public virtual void OnPowerupSelected(object sender, EventArgs eventArgs) {
+            paused = false;
         }
 
         public List<Enemy> GetEnemies() {

@@ -1,10 +1,12 @@
 using Microsoft.Xna.Framework;
+using System;
 
 namespace topdownShooter {
     public class HUD {
         private World world;
         private Rectangle2D xpRect, xpRectOutline;
         private float middle, xpWidth, xpHeight;
+        private PowerupSelection powerupSelection;
 
         public HUD(World world) {
             this.world = world;
@@ -15,6 +17,20 @@ namespace topdownShooter {
             //float xpHeight = 5;
             xpRect = new Rectangle2D(new Vector2(middle - xpWidth/2, 10), new Vector2(middle - xpWidth/2, 15), true);
             xpRectOutline = new Rectangle2D(new Vector2(middle - xpWidth/2, 10), new Vector2(middle + xpWidth/2, 10 + xpHeight), false);
+        }
+
+        public void CreatePowerupSelection() {
+            powerupSelection = new PowerupSelection();
+            powerupSelection.AddEventHandler(OnPowerupSelected);
+            powerupSelection.AddEventHandler(world.OnPowerupSelected);
+        }
+
+        public void OnPowerupSelected(object sender, EventArgs events) {
+            powerupSelection = null;
+        }
+
+        public virtual void Update() {
+            if (powerupSelection != null) powerupSelection.Update();
         }
 
         public virtual void Draw() {
@@ -36,6 +52,8 @@ namespace topdownShooter {
 
                 xpRect.Draw();
                 xpRectOutline.Draw();
+
+                if (powerupSelection != null) powerupSelection.Draw();
             }
         }
     }
