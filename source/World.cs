@@ -32,6 +32,7 @@ namespace topdownShooter {
             GameGlobals.IncreaseScore = IncreaseScore;
             GameGlobals.IncreaseXp = IncreaseXp;
             GameGlobals.GetEnemies = GetEnemies;
+            GameGlobals.GetWorld = () => this;
 
             Vector2 offset = new Vector2(0, 0);
             paused = false;

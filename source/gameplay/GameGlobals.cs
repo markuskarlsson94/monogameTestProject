@@ -6,5 +6,6 @@ namespace topdownShooter {
         public static Call IncreaseScore;
         public static Call IncreaseXp;
         public static CallAndReturn GetEnemies;
+        public static CallAndReturn GetWorld;
     }
 }
