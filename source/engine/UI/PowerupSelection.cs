@@ -8,9 +8,9 @@ namespace topdownShooter {
         private PowerupCard card2;
 
         public PowerupSelection() {
-            card0 = new HpPowerupCard(new Vector2(200, 200));
-            card1 = new AmmoPowerupCard(new Vector2(400, 200));
-            card2 = new DamagePowerupCard(new Vector2(600, 200));
+            card0 = new HpPowerupCard(new Vector2(150, 150));
+            card1 = new AmmoPowerupCard(new Vector2(330, 150));
+            card2 = new DamagePowerupCard(new Vector2(510, 150));
         }
 
         public void AddEventHandler(EventHandler eventHandler) {
