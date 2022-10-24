@@ -97,6 +97,10 @@ namespace topdownShooter {
             }
         }
 
+        public virtual void Draw2() {
+            hud.Draw();
+        }
+
         public virtual void AddProjectile(object obj) {
             projectiles.Add((Projectile)obj);
         }

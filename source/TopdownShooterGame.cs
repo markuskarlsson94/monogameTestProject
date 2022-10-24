@@ -65,6 +65,10 @@ namespace topdownShooter
 
             Globals.spriteBatch.Begin();
             world.Draw(Vector2.Zero);
+            Globals.spriteBatch.End();
+
+            Globals.spriteBatch.Begin();
+            world.Draw2();
             cursor.Draw(Globals.mouse.newMousePos, new Vector2(6, 6));
             Globals.spriteBatch.End();
 
