@@ -15,6 +15,7 @@ namespace topdownShooter
         private float ammoTimer;
         private float acc = 0.5f;
         private int damage;
+        private MovementComponent movementComponent;
 
         //Properties
         public int Ammo {
@@ -41,8 +42,6 @@ namespace topdownShooter
             get => damage;
             set => damage = value;
         }
-
-        private MovementComponent movementComponent;
 
         public Player(string path, Vector2 pos) : base(path, pos) {
             hp = hpMax;
