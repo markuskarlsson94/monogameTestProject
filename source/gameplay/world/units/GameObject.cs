@@ -17,8 +17,6 @@ namespace topdownShooter {
             return Vector2.Distance(pos, obj.pos) <= collisionRadius + obj.collisionRadius + buffer;
         }
 
-        public virtual void GetHit(Vector2 vel) {}
-
         public virtual void Remove() {
             remove = true;
         }

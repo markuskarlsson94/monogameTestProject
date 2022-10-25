@@ -30,13 +30,14 @@ namespace topdownShooter {
             movementComponent.AddExternalVel(vel);
         }
 
-        public override void GetHit(Vector2 vel) {
+        public virtual void GetHit(Vector2 vel, int damage) {
             AddExternalVel(vel);
 
             movementComponent.SetAcc(new Vector2(0, 0));
             hitTimer = hitTimerMax;
 
-            hp -= 1;
+            hp -= damage;
+            
             if (hp <= 0) {
                 Remove();
                 Orb orb = new Orb(pos, player);

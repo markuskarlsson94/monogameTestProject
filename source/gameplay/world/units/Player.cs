@@ -14,6 +14,7 @@ namespace topdownShooter
         private float ammoTimerMax = 120f;
         private float ammoTimer;
         private float acc = 0.5f;
+        private int damage;
 
         //Properties
         public float Ammo => ammo;
@@ -29,6 +30,7 @@ namespace topdownShooter
             canShootTimer = 0;
             ammo = ammoMax;
             ammoTimer = ammoTimerMax;
+            damage = 4;
 
             movementComponent = new MovementComponent();
         }
