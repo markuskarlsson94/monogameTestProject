@@ -11,8 +11,8 @@ namespace topdownShooter
         private float canShootTimer;
         private int ammoMax = 3;
         private int ammo;
-        private float ammoTimerMax = 120f;
-        private float ammoTimer;
+        private int reloadTimerMax = 120;
+        private int reloadTimer;
         private float acc = 0.5f;
         private int damage;
         private MovementComponent movementComponent;
@@ -48,7 +48,7 @@ namespace topdownShooter
             hurtTimer = 0;
             canShootTimer = 0;
             ammo = ammoMax;
-            ammoTimer = ammoTimerMax;
+            reloadTimer = reloadTimerMax;
             damage = 4;
 
             movementComponent = new MovementComponent();
@@ -102,15 +102,15 @@ namespace topdownShooter
 
                 //Shooting
                 if (canShootTimer > 0) {
-                    canShootTimer -= 1f;
+                    canShootTimer -= 1;
                 }
 
                 if (ammo <= 0) {
-                    if (ammoTimer > 0) {
-                        ammoTimer -= 1f;
+                    if (reloadTimer > 0) {
+                        reloadTimer -= 1;
 
-                        if (ammoTimer <= 0) {
-                            ammoTimer = ammoTimerMax;
+                        if (reloadTimer <= 0) {
+                            reloadTimer = reloadTimerMax;
                             ammo = ammoMax;
                         }
                     }
