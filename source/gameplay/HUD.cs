@@ -47,6 +47,9 @@ namespace topdownShooter {
                 Globals.spriteBatch.DrawString(Globals.gameFont, scoreString , new Vector2(10, 50), Color.White);
                 Globals.spriteBatch.DrawString(Globals.gameFont, xpString , new Vector2(middle + xpWidth/2 + 8, 4), Color.White);
 
+                string damageString = $"Damage: {player.Damage}";
+                Globals.spriteBatch.DrawString(Globals.gameFont, damageString, new Vector2(10, 470), Color.White);
+
                 float ratio = (float)world.xp/(float)world.xpMax;
                 xpRect.P1 = new Vector2(middle - xpWidth/2 + (ratio*xpWidth), 15);
 
