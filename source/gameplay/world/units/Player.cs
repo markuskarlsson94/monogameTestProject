@@ -9,18 +9,38 @@ namespace topdownShooter
         private float hurtTimer;
         private float canShootTimerMax = 20f;
         private float canShootTimer;
-        private float ammoMax = 3;
-        private float ammo;
+        private int ammoMax = 3;
+        private int ammo;
         private float ammoTimerMax = 120f;
         private float ammoTimer;
         private float acc = 0.5f;
         private int damage;
 
         //Properties
-        public float Ammo => ammo;
-        public float AmmoMax => ammoMax;
-        public float Hp => hp;
-        public float HpMax => hpMax;
+        public int Ammo {
+            get => ammo;
+            set => ammo = value;
+        }
+
+        public int AmmoMax {
+            get => ammoMax;
+            set => ammoMax = value;
+        }
+        
+        public int Hp {
+            get => hp;
+            set => hp = value;
+        }
+        
+        public int HpMax {
+            get => hpMax;
+            set => hpMax = value;
+        }
+
+        public int Damage {
+            get => damage;
+            set => damage = value;
+        }
 
         private MovementComponent movementComponent;
 

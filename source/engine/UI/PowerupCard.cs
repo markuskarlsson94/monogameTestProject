@@ -34,6 +34,10 @@ namespace topdownShooter {
             button.Update();
         }
 
+        protected Player Player() {
+            return ((World)GameGlobals.GetWorld()).player;
+        }
+
         public void Draw() {
             background.Draw();
             Utility.DrawText(Globals.spriteBatch, new Vector2(pos.X + size.X/2, pos.Y + 10), "Upgrade", Globals.gameFont, FontAlignment.topCenter);
@@ -48,7 +52,7 @@ namespace topdownShooter {
 
         protected override Call Powerup() {
             return () => {
-                System.Console.WriteLine("Increased damage.");
+                Player().Damage++;
             };
         }
 
@@ -63,7 +67,9 @@ namespace topdownShooter {
 
         protected override Call Powerup() {
             return () => {
-                System.Console.WriteLine("Increased hp");
+                Player player = Player();
+                player.HpMax++;
+                player.Hp++;
             };
         }
 
@@ -78,7 +84,7 @@ namespace topdownShooter {
 
         protected override Call Powerup() {
             return () => {
-                System.Console.WriteLine("Increased ammo");
+                Player().AmmoMax++;
             };
         }
 
