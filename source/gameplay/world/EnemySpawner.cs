@@ -22,7 +22,7 @@ namespace topdownShooter {
 
                 if (timer <= 0f) {
                     timer = timerMax;
-                    Vector2 spawnVec = new Vector2(400, 0);
+                    Vector2 spawnVec = new Vector2(450, 0);
 
                     float dir = random.Next(360);
                     spawnVec = Utility.Vector2Rotated(spawnVec, dir);
