@@ -43,6 +43,11 @@ namespace topdownShooter
             set => damage = value;
         }
 
+        public int ReloadTimerMax {
+            get => reloadTimerMax;
+            set => reloadTimerMax = value;
+        }
+
         public Player(string path, Vector2 pos) : base(path, pos) {
             hp = hpMax;
             hurtTimer = 0;

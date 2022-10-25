@@ -92,4 +92,19 @@ namespace topdownShooter {
             return "Increase ammo\n by 1.";
         }
     }
+
+
+    public class ReloadTimerPowerupCard : PowerupCard {
+        public ReloadTimerPowerupCard(Vector2 pos) : base(pos) {}
+
+        protected override Call Powerup() {
+            return () => {
+                Player().ReloadTimerMax -= 10;
+            };
+        }
+
+        protected override string PowerupText() {
+            return "Decrease reload\n timer by 10 frames.";
+        }
+    }
 }
