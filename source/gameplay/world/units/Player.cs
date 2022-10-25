@@ -7,8 +7,8 @@ namespace topdownShooter
         private int hp;
         private float hurtTimerMax = 60f;
         private float hurtTimer;
-        private float canShootTimerMax = 20f;
-        private float canShootTimer;
+        private int bulletTimerMax = 20;
+        private int bulletTimer;
         private int ammoMax = 3;
         private int ammo;
         private int reloadTimerMax = 120;
@@ -51,7 +51,7 @@ namespace topdownShooter
         public Player(string path, Vector2 pos) : base(path, pos) {
             hp = hpMax;
             hurtTimer = 0;
-            canShootTimer = 0;
+            bulletTimer = 0;
             ammo = ammoMax;
             reloadTimer = reloadTimerMax;
             damage = 4;
@@ -106,8 +106,8 @@ namespace topdownShooter
                 rot = Globals.RotateTowards(pos, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y));
 
                 //Shooting
-                if (canShootTimer > 0) {
-                    canShootTimer -= 1;
+                if (bulletTimer > 0) {
+                    bulletTimer -= 1;
                 }
 
                 if (ammo <= 0) {
@@ -122,10 +122,10 @@ namespace topdownShooter
                 }
 
                 if (Globals.mouse.LeftClickHold()) {
-                    if (canShootTimer <= 0 && ammo > 0) {
+                    if (bulletTimer <= 0 && ammo > 0) {
                         Vector2 dir = Globals.mouse.newMousePos - pos;
                         GameGlobals.PassProjectile(new PlayerProjectile(pos, this, dir));
-                        canShootTimer = canShootTimerMax;
+                        bulletTimer = bulletTimerMax;
                         ammo -= 1;
                         
                         dir.Normalize();
