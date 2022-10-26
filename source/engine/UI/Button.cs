@@ -2,13 +2,22 @@ using Microsoft.Xna.Framework;
 
 namespace topdownShooter {
     public class Button {
-        public Vector2 pos;
+        private Vector2 pos;
         public Vector2 size;
         public string text;
         private Rectangle2D rect;
         public Color color, activeColor;
         private float activeValue;
         private Call callback;
+
+        public Vector2 Pos {
+            get => pos;
+            set {
+                pos = value;
+                rect.P0 = pos;
+                rect.P1 = pos + size;
+            }
+        }
 
         public Button(Vector2 pos, Vector2 size, string text, Call callback = null, Color color = default(Color), Color activeColor = default(Color)) {
             activeValue = 0;

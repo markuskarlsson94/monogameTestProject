@@ -3,24 +3,36 @@ using System;
 
 namespace topdownShooter {
     public abstract class PowerupCard {
-        public Vector2 pos;
+        private Vector2 pos;
         public Vector2 size;
         private Rectangle2D background;
-
         public Button button;
         private Vector2 buttonSize;
         private Vector2 buttonPos;
-
         public event EventHandler powerupSelected;
 
-        public PowerupCard(Vector2 pos) {
-            this.pos = pos;
+        public Vector2 Pos {
+            get => pos;
+            set {
+                pos = value;
+                Init();
+            }
+        }
+
+        public PowerupCard() {
+            pos = new Vector2(0, 0);
             size = new Vector2(140, 200);
-            background = new Rectangle2D(pos, pos + size, true, Color.SlateBlue*0.5f);
 
             buttonSize = new Vector2(100, 20);
             buttonPos = new Vector2((size.X - buttonSize.X)/2, size.Y - buttonSize.Y - 5);
             button = new Button(pos + buttonPos, buttonSize, "Select", Powerup() + OnPowerupSelected);
+            Init();
+        }
+
+        public void Init() {
+            buttonSize = new Vector2(100, 20);
+            background = new Rectangle2D(pos, pos + size, true, Color.SlateBlue*0.5f);
+            button.Pos = pos + new Vector2((size.X - buttonSize.X)/2, size.Y - buttonSize.Y - 5);
         }
 
         protected abstract Call Powerup();
@@ -48,7 +60,7 @@ namespace topdownShooter {
 
 
     public class DamagePowerupCard : PowerupCard {
-        public DamagePowerupCard(Vector2 pos) : base(pos) {}
+        public DamagePowerupCard() : base() {}
 
         protected override Call Powerup() {
             return () => {
@@ -63,7 +75,7 @@ namespace topdownShooter {
 
 
     public class HpPowerupCard : PowerupCard {
-        public HpPowerupCard(Vector2 pos) : base(pos) {}
+        public HpPowerupCard() : base() {}
 
         protected override Call Powerup() {
             return () => {
@@ -80,7 +92,7 @@ namespace topdownShooter {
 
 
     public class AmmoPowerupCard : PowerupCard {
-        public AmmoPowerupCard(Vector2 pos) : base(pos) {}
+        public AmmoPowerupCard() : base() {}
 
         protected override Call Powerup() {
             return () => {
@@ -95,7 +107,7 @@ namespace topdownShooter {
 
 
     public class ReloadTimerPowerupCard : PowerupCard {
-        public ReloadTimerPowerupCard(Vector2 pos) : base(pos) {}
+        public ReloadTimerPowerupCard() : base() {}
 
         protected override Call Powerup() {
             return () => {
