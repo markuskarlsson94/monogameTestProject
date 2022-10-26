@@ -48,6 +48,11 @@ namespace topdownShooter
             set => reloadTimerMax = value;
         }
 
+        public int BulletTimerMax {
+            get => bulletTimerMax;
+            set => bulletTimerMax = value;
+        }
+
         public Player(string path, Vector2 pos) : base(path, pos) {
             hp = hpMax;
             hurtTimer = 0;

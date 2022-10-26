@@ -119,4 +119,19 @@ namespace topdownShooter {
             return "Decrease reload\n timer by 10 frames.";
         }
     }
+
+
+    public class BulletTimerPowerupCard : PowerupCard {
+        public BulletTimerPowerupCard() : base() {}
+
+        protected override Call Powerup() {
+            return () => {
+                Player().BulletTimerMax -= 2;
+            };
+        }
+
+        protected override string PowerupText() {
+            return "Decrease bullet\n timer by 2 frames.";
+        }
+    }
 }
