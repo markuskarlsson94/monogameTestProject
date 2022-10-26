@@ -134,4 +134,19 @@ namespace topdownShooter {
             return "Decrease bullet\n timer by 2 frames.";
         }
     }
+
+    
+    public class XpCollectionRadiusPowerupCard : PowerupCard {
+        public XpCollectionRadiusPowerupCard() : base() {}
+
+        protected override Call Powerup() {
+            return () => {
+                Player().OrbDistanceCollectionRadius += 20f;
+            };
+        }
+
+        protected override string PowerupText() {
+            return "Increase xp\n collection radius\n by 20 pixels.";
+        }
+    }
 }

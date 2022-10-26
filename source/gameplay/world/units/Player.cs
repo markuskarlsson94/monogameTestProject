@@ -15,6 +15,7 @@ namespace topdownShooter
         private int reloadTimer;
         private float acc = 0.5f;
         private int damage;
+        private float orbDistanceCollectionRadius = 100f;
         private MovementComponent movementComponent;
 
         //Properties
@@ -51,6 +52,11 @@ namespace topdownShooter
         public int BulletTimerMax {
             get => bulletTimerMax;
             set => bulletTimerMax = value;
+        }
+
+        public float OrbDistanceCollectionRadius {
+            get => orbDistanceCollectionRadius;
+            set => orbDistanceCollectionRadius = value;
         }
 
         public Player(string path, Vector2 pos) : base(path, pos) {
