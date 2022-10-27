@@ -164,4 +164,19 @@ namespace topdownShooter {
             return "Increase bullet\n speed by 1.";
         }
     }
+
+
+    public class SpeedPowerupCard : PowerupCard {
+        public SpeedPowerupCard() : base() {}
+
+        protected override Call Powerup() {
+            return () => {
+                Player().MaxSpeed += 0.5f;
+            };
+        }
+
+        protected override string PowerupText() {
+            return "Increase speed\n by 0.5.";
+        }
+    }
 }
