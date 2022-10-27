@@ -10,6 +10,11 @@ namespace topdownShooter {
         private float maxExtSpeed;
         private float friction;
 
+        public float MaxSpeed {
+            get => maxSpeed;
+            set => maxSpeed = value;
+        }
+
         public MovementComponent() {
             acc = new Vector2();
             vel = new Vector2();
@@ -61,10 +66,6 @@ namespace topdownShooter {
 
         public void AddExternalVel(Vector2 vel) {
             externalVel += vel;
-        }
-
-        public void SetMaxSpeed(float max) {
-            maxSpeed = max;
         }
 
         public void SetMaxExtSpeed(float max) {

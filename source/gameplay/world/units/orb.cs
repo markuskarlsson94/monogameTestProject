@@ -10,7 +10,7 @@ namespace topdownShooter {
             this.player = player;
             lifeTimer = 480;
             movementComponent = new MovementComponent();
-            movementComponent.SetMaxSpeed(5f);
+            movementComponent.MaxSpeed = 5f;
             movementComponent.SetFriction(0.1f);
         }
 

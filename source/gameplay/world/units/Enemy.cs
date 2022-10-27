@@ -14,7 +14,7 @@ namespace topdownShooter {
 
         public Enemy(string path, Vector2 pos, Player player) : base(path, pos) {
             movementComponent = new MovementComponent();
-            movementComponent.SetMaxSpeed(speedMax);
+            movementComponent.MaxSpeed = speedMax;
             movementComponent.SetFriction(0.1f);
             hitTimer = 0;
             hitTimerMax = 30f;
@@ -37,7 +37,7 @@ namespace topdownShooter {
             hitTimer = hitTimerMax;
 
             hp -= damage;
-            
+
             if (hp <= 0) {
                 Remove();
                 Orb orb = new Orb(pos, player);

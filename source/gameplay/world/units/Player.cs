@@ -65,6 +65,13 @@ namespace topdownShooter
             set => bulletSpeed = value;
         }
 
+        public float MaxSpeed {
+            get => movementComponent.MaxSpeed;
+            set {
+                movementComponent.MaxSpeed = value;
+            }
+        }
+
         public Player(string path, Vector2 pos) : base(path, pos) {
             hp = hpMax;
             hurtTimer = 0;
