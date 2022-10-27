@@ -149,4 +149,19 @@ namespace topdownShooter {
             return "Increase xp\n collection radius\n by 20 pixels.";
         }
     }
+
+
+    public class BulletSpeedPowerupCard : PowerupCard {
+        public BulletSpeedPowerupCard() : base() {}
+
+        protected override Call Powerup() {
+            return () => {
+                Player().BulletSpeed += 1f;
+            };
+        }
+
+        protected override string PowerupText() {
+            return "Increase bullet\n speed by 1.";
+        }
+    }
 }
