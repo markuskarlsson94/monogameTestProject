@@ -16,6 +16,7 @@ namespace topdownShooter
         private float acc = 0.5f;
         private int damage;
         private float orbDistanceCollectionRadius = 100f;
+        private float bulletSpeed = 4f;
         private MovementComponent movementComponent;
 
         //Properties
@@ -57,6 +58,11 @@ namespace topdownShooter
         public float OrbDistanceCollectionRadius {
             get => orbDistanceCollectionRadius;
             set => orbDistanceCollectionRadius = value;
+        }
+
+        public float BulletSpeed {
+            get => bulletSpeed;
+            set => bulletSpeed = value;
         }
 
         public Player(string path, Vector2 pos) : base(path, pos) {

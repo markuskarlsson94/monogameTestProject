@@ -9,6 +9,7 @@ namespace topdownShooter {
         public PlayerProjectile(Vector2 pos, GameObject owner, Vector2 direction) : base("sprBullet", pos, owner, direction) {
             rot = owner.rot + Globals.DegToRad(270);
             damage = ((Player)owner).Damage;
+            speed = ((Player)owner).BulletSpeed;
         }
 
         public override bool HitSomething() {
