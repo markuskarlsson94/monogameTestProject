@@ -20,50 +20,15 @@ namespace topdownShooter
         private MovementComponent movementComponent;
 
         //Properties
-        public int Ammo {
-            get => ammo;
-            set => ammo = value;
-        }
-
-        public int AmmoMax {
-            get => ammoMax;
-            set => ammoMax = value;
-        }
-        
-        public int Hp {
-            get => hp;
-            set => hp = value;
-        }
-        
-        public int HpMax {
-            get => hpMax;
-            set => hpMax = value;
-        }
-
-        public int Damage {
-            get => damage;
-            set => damage = value;
-        }
-
-        public int ReloadTimerMax {
-            get => reloadTimerMax;
-            set => reloadTimerMax = value;
-        }
-
-        public int BulletTimerMax {
-            get => bulletTimerMax;
-            set => bulletTimerMax = value;
-        }
-
-        public float OrbDistanceCollectionRadius {
-            get => orbDistanceCollectionRadius;
-            set => orbDistanceCollectionRadius = value;
-        }
-
-        public float BulletSpeed {
-            get => bulletSpeed;
-            set => bulletSpeed = value;
-        }
+        public int Ammo { get; set; }
+        public int AmmoMax { get; set; }
+        public int Hp { get; set; }
+        public int HpMax { get; set; }
+        public int Damage { get; set; }
+        public int ReloadTimerMax { get; set; }
+        public int BulletTimerMax { get; set; }
+        public float OrbDistanceCollectionRadius { get; set; }
+        public float BulletSpeed { get; set; }
 
         public float MaxSpeed {
             get => movementComponent.MaxSpeed;
