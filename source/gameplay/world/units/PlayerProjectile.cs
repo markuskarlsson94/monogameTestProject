@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace topdownShooter {
     public class PlayerProjectile : Projectile {
-        private float hitSpeed = 2f;
         private int damage;
         private HashSet<Enemy> hitEnemies;
         private int enemyHits;
@@ -27,7 +26,7 @@ namespace topdownShooter {
                     if (!hitEnemies.Contains(obj)) {
                         hitEnemies.Add(obj);
                         enemyHits++;
-                        Vector2 v = Vector2.Normalize(direction)*hitSpeed;
+                        Vector2 v = Vector2.Normalize(direction)*speed*0.5f;
                         obj.GetHit(v, damage);
 
                         return enemyHits >= enemyHitsMax;
