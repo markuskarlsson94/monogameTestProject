@@ -19,7 +19,8 @@ namespace topdownShooter {
                 new XpCollectionRadiusPowerupCard(),
                 new BulletSpeedPowerupCard(),
                 new SpeedPowerupCard(),
-                new EnemyHitsPowerupCard()
+                new EnemyHitsPowerupCard(),
+                new BulletAmountPowerupCard()
             };
 
             Random rnd = new Random();

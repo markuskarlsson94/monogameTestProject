@@ -194,4 +194,19 @@ namespace topdownShooter {
             return "Increase enemy\n hits by 1";
         }
     }
+
+
+    public class BulletAmountPowerupCard : PowerupCard {
+        public BulletAmountPowerupCard() : base() {}
+
+        protected override Call Powerup() {
+            return () => {
+                Player().BulletAmount++;
+            };
+        }
+
+        protected override string PowerupText() {
+            return "Increase bullet\n amount by 1";
+        }
+    }
 }
