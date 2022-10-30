@@ -6,6 +6,7 @@ namespace topdownShooter
         private float hurtTimerMax = 60f;
         private float hurtTimer;
         private float acc = 0.5f;
+        private float bulletDirDiff = 12f;
         private MovementComponent movementComponent;
 
         //Properties
@@ -21,6 +22,7 @@ namespace topdownShooter
         private int ReloadTimer { get; set; }
         public int ReloadTimerMax { get; set; }
         public int EnemyHitsMax { get; set; }
+        public int BulletAmount { get; set; }
 
         public float MaxSpeed {
             get => movementComponent.MaxSpeed;
@@ -43,6 +45,7 @@ namespace topdownShooter
             BulletSpeed = 4f;
             Damage = 4;
             EnemyHitsMax = 1;
+            BulletAmount = 1;
 
             movementComponent = new MovementComponent();
         }
@@ -112,7 +115,15 @@ namespace topdownShooter
                 if (Globals.mouse.LeftClickHold()) {
                     if (BulletTimer <= 0 && Ammo > 0) {
                         Vector2 dir = Globals.mouse.newMousePos - pos;
-                        GameGlobals.PassProjectile(new PlayerProjectile(pos, this, dir));
+                        Vector2 bulletDir = dir;
+                        float offset = (bulletDirDiff*(BulletAmount - 1))/2;
+                        bulletDir = Utility.Vector2Rotated(bulletDir, -offset);
+
+                        for (int i = 0; i < BulletAmount; i++) {
+                            GameGlobals.PassProjectile(new PlayerProjectile(pos, this, bulletDir));
+                            bulletDir = Utility.Vector2Rotated(bulletDir, bulletDirDiff);
+                        }
+
                         BulletTimer = BulletTimerMax;
                         Ammo -= 1;
                         

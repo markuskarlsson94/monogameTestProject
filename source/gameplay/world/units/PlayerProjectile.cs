@@ -10,8 +10,7 @@ namespace topdownShooter {
         private int enemyHitsMax;
 
         public PlayerProjectile(Vector2 pos, GameObject owner, Vector2 direction) : base("sprBullet", pos, owner, direction) {
-            rot = owner.rot + Globals.DegToRad(270);
-
+            rot = (float)System.Math.Atan2(direction.Y, direction.X);
             Player player = (Player)owner;
             damage = player.Damage;
             speed = player.BulletSpeed;
