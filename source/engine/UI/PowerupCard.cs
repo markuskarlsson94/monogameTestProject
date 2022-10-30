@@ -156,12 +156,12 @@ namespace topdownShooter {
 
         protected override Call Powerup() {
             return () => {
-                Player().OrbDistanceCollectionRadius += 20f;
+                Player().OrbDistanceCollectionRadius += 30f;
             };
         }
 
         protected override string PowerupText() {
-            return "Increase xp\n pickup radius\n by 20 pixels.";
+            return "Increase xp\n pickup radius\n by 30 pixels.";
         }
     }
 

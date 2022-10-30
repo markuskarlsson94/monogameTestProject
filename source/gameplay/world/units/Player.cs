@@ -32,7 +32,7 @@ namespace topdownShooter
         }
 
         public Player(string path, Vector2 pos) : base(path, pos) {
-            HpMax = 4;
+            HpMax = 2;
             Hp = HpMax;
             hurtTimer = 0;
             BulletTimerMax = 20;
@@ -41,7 +41,7 @@ namespace topdownShooter
             Ammo = AmmoMax;
             ReloadTimerMax = 120;
             ReloadTimer = ReloadTimerMax;
-            OrbDistanceCollectionRadius = 100f;
+            OrbDistanceCollectionRadius = 60f;
             BulletSpeed = 4f;
             Damage = 4;
             EnemyHitsMax = 1;
