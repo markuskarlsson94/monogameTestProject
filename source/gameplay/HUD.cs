@@ -7,6 +7,8 @@ namespace topdownShooter {
         private Rectangle2D xpRect, xpRectOutline;
         private float middle, xpWidth, xpHeight;
         private PowerupSelection powerupSelection;
+        string introText;
+        float introTextAlpha;
 
         public HUD(World world) {
             this.world = world;
@@ -17,6 +19,9 @@ namespace topdownShooter {
             //float xpHeight = 5;
             xpRect = new Rectangle2D(new Vector2(middle - xpWidth/2, 10), new Vector2(middle - xpWidth/2, 15), true);
             xpRectOutline = new Rectangle2D(new Vector2(middle - xpWidth/2, 10), new Vector2(middle + xpWidth/2, 10 + xpHeight), false);
+            
+            introText = "Move: WASD, Shoot: Left mouse button";
+            introTextAlpha = 5f;
         }
 
         public void CreatePowerupSelection() {
@@ -31,9 +36,14 @@ namespace topdownShooter {
 
         public virtual void Update() {
             if (powerupSelection != null) powerupSelection.Update();
+            introTextAlpha = Math.Max(introTextAlpha - 0.01f, 0);
         }
 
         public virtual void Draw() {
+            if (introTextAlpha > 0) {
+                Utility.DrawText(Globals.spriteBatch, new Vector2(Globals.screenWidth/2, Globals.screenHeight/2), introText, Globals.gameFont, FontAlignment.middleCenter, Color.White*introTextAlpha);
+            }
+
             Player player = world.player;
 
             if (player != null) {
