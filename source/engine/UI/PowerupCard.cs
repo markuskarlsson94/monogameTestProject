@@ -101,7 +101,7 @@ namespace topdownShooter {
         }
 
         protected override string PowerupText() {
-            return "Increase ammo\n by 1.";
+            return "Increase max\n ammo by 1.";
         }
     }
 
@@ -146,7 +146,7 @@ namespace topdownShooter {
         }
 
         protected override string PowerupText() {
-            return "Increase xp\n collection radius\n by 20 pixels.";
+            return "Increase xp\n pickup radius\n by 20 pixels.";
         }
     }
 
