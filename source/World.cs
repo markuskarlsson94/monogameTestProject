@@ -120,7 +120,7 @@ namespace topdownShooter {
         public virtual void IncreaseXp() {
             if (++xp >= xpMax) {
                 xp = 0;
-                xpMax += 1;
+                xpMax += 2;
                 ++level;
 
                 hud.CreatePowerupSelection();
