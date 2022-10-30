@@ -179,4 +179,19 @@ namespace topdownShooter {
             return "Increase speed\n by 0.5.";
         }
     }
+
+
+    public class EnemyHitsPowerupCard : PowerupCard {
+        public EnemyHitsPowerupCard() : base() {}
+
+        protected override Call Powerup() {
+            return () => {
+                Player().EnemyHitsMax++;
+            };
+        }
+
+        protected override string PowerupText() {
+            return "Increase enemy\n hits by 1";
+        }
+    }
 }
