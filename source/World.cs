@@ -14,6 +14,7 @@ namespace topdownShooter {
         public int score;
         public int xp, xpMax, level;
         public HUD hud;
+        private float flashAlpha;
 
         public World() {
             Init();
@@ -21,6 +22,7 @@ namespace topdownShooter {
 
         public void Init() {
             player = new Player("sprPlayer", new Vector2(400, 200));
+            player.damaged += OnDamaged;
             enemySpawner = new EnemySpawner(player);
             score = 0;
             xp = 0;
@@ -39,6 +41,7 @@ namespace topdownShooter {
             paused = false;
 
             hud = new HUD(this);
+            flashAlpha = 0;
         }
 
         public void Reset() {
@@ -99,6 +102,8 @@ namespace topdownShooter {
             }
 
             hud.Update();
+
+            flashAlpha = Math.Max(flashAlpha - 0.05f, 0f);
         }
 
         public virtual void AddProjectile(object obj) {
@@ -136,6 +141,14 @@ namespace topdownShooter {
             return enemies;
         }
 
+        private void OnDamaged(object sender, EventArgs events) {
+            flashScreen();
+        }
+
+        private void flashScreen() {
+            flashAlpha = 0.5f;
+        }
+
         public virtual void Draw(Vector2 offset) {
             player?.Draw(offset);
 
@@ -151,7 +164,9 @@ namespace topdownShooter {
                 o.Draw(offset);
             }
 
-            //hud.Draw();
+            if (flashAlpha > 0) {
+                DrawFunctions.DrawRectangle(new Vector2(0, 0), new Vector2(Globals.screenWidth, Globals.screenHeight), true, Color.Red*flashAlpha);
+            }
         }
 
         public virtual void Draw2() {

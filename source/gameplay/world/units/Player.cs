@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System;
 
 namespace topdownShooter
 {
@@ -8,6 +9,7 @@ namespace topdownShooter
         private float acc = 0.5f;
         private float bulletDirDiff = 12f;
         private MovementComponent movementComponent;
+        public event EventHandler damaged;
 
         //Properties
         public int Ammo { get; set; }
@@ -62,11 +64,16 @@ namespace topdownShooter
             if (hurtTimer <= 0f) {
                 hurtTimer = hurtTimerMax;
                 --Hp;
+                OnDamaged();
             }
         }
 
         public bool IsAlive() {
             return Hp > 0;
+        }
+
+        private void OnDamaged() {
+            if (damaged != null) damaged(this, null); 
         }
 
         public override void Update() {
