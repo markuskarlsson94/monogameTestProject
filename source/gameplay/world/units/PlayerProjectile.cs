@@ -5,11 +5,19 @@ namespace topdownShooter {
     public class PlayerProjectile : Projectile {
         private float hitSpeed = 2f;
         private int damage;
+        private HashSet<Enemy> hitEnemies;
+        private int enemyHits;
+        private int enemyHitsMax;
 
         public PlayerProjectile(Vector2 pos, GameObject owner, Vector2 direction) : base("sprBullet", pos, owner, direction) {
             rot = owner.rot + Globals.DegToRad(270);
-            damage = ((Player)owner).Damage;
-            speed = ((Player)owner).BulletSpeed;
+
+            Player player = (Player)owner;
+            damage = player.Damage;
+            speed = player.BulletSpeed;
+            hitEnemies = new HashSet<Enemy>();
+            enemyHits = 0;
+            enemyHitsMax = player.EnemyHitsMax;
         }
 
         public override bool HitSomething() {
@@ -17,9 +25,14 @@ namespace topdownShooter {
 
             foreach (Enemy obj in enemies) {
                 if (CollidingWith(obj)) {
-                    Vector2 v = Vector2.Normalize(direction)*hitSpeed;
-                    obj.GetHit(v, damage);
-                    return true;
+                    if (!hitEnemies.Contains(obj)) {
+                        hitEnemies.Add(obj);
+                        enemyHits++;
+                        Vector2 v = Vector2.Normalize(direction)*hitSpeed;
+                        obj.GetHit(v, damage);
+
+                        return enemyHits >= enemyHitsMax;
+                    }
                 }
             }
 

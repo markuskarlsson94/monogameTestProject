@@ -20,6 +20,7 @@ namespace topdownShooter
         public float BulletSpeed { get; set; }
         private int ReloadTimer { get; set; }
         public int ReloadTimerMax { get; set; }
+        public int EnemyHitsMax { get; set; }
 
         public float MaxSpeed {
             get => movementComponent.MaxSpeed;
@@ -41,6 +42,7 @@ namespace topdownShooter
             OrbDistanceCollectionRadius = 100f;
             BulletSpeed = 4f;
             Damage = 4;
+            EnemyHitsMax = 1;
 
             movementComponent = new MovementComponent();
         }
