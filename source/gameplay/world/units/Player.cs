@@ -3,20 +3,9 @@ using Microsoft.Xna.Framework;
 namespace topdownShooter
 {
     public class Player : GameObject, IMovementComponent {
-        private int hpMax = 4;
-        private int hp;
         private float hurtTimerMax = 60f;
         private float hurtTimer;
-        private int bulletTimerMax = 20;
-        private int bulletTimer;
-        private int ammoMax = 3;
-        private int ammo;
-        private int reloadTimerMax = 120;
-        private int reloadTimer;
         private float acc = 0.5f;
-        private int damage;
-        private float orbDistanceCollectionRadius = 100f;
-        private float bulletSpeed = 4f;
         private MovementComponent movementComponent;
 
         //Properties
@@ -25,10 +14,12 @@ namespace topdownShooter
         public int Hp { get; set; }
         public int HpMax { get; set; }
         public int Damage { get; set; }
-        public int ReloadTimerMax { get; set; }
+        public int BulletTimer { get; set; }
         public int BulletTimerMax { get; set; }
         public float OrbDistanceCollectionRadius { get; set; }
         public float BulletSpeed { get; set; }
+        private int ReloadTimer { get; set; }
+        public int ReloadTimerMax { get; set; }
 
         public float MaxSpeed {
             get => movementComponent.MaxSpeed;
@@ -38,12 +29,18 @@ namespace topdownShooter
         }
 
         public Player(string path, Vector2 pos) : base(path, pos) {
-            hp = hpMax;
+            HpMax = 4;
+            Hp = HpMax;
             hurtTimer = 0;
-            bulletTimer = 0;
-            ammo = ammoMax;
-            reloadTimer = reloadTimerMax;
-            damage = 4;
+            BulletTimerMax = 20;
+            BulletTimer = 0;
+            AmmoMax = 3;
+            Ammo = AmmoMax;
+            ReloadTimerMax = 120;
+            ReloadTimer = ReloadTimerMax;
+            OrbDistanceCollectionRadius = 100f;
+            BulletSpeed = 4f;
+            Damage = 4;
 
             movementComponent = new MovementComponent();
         }
@@ -59,12 +56,12 @@ namespace topdownShooter
         public void Hurt() {
             if (hurtTimer <= 0f) {
                 hurtTimer = hurtTimerMax;
-                --hp;
+                --Hp;
             }
         }
 
         public bool IsAlive() {
-            return hp > 0;
+            return Hp > 0;
         }
 
         public override void Update() {
@@ -95,27 +92,27 @@ namespace topdownShooter
                 rot = Globals.RotateTowards(pos, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y));
 
                 //Shooting
-                if (bulletTimer > 0) {
-                    bulletTimer -= 1;
+                if (BulletTimer > 0) {
+                    BulletTimer -= 1;
                 }
 
-                if (ammo <= 0) {
-                    if (reloadTimer > 0) {
-                        reloadTimer -= 1;
+                if (Ammo <= 0) {
+                    if (ReloadTimer > 0) {
+                        ReloadTimer -= 1;
 
-                        if (reloadTimer <= 0) {
-                            reloadTimer = reloadTimerMax;
-                            ammo = ammoMax;
+                        if (ReloadTimer <= 0) {
+                            ReloadTimer = ReloadTimerMax;
+                            Ammo = AmmoMax;
                         }
                     }
                 }
 
                 if (Globals.mouse.LeftClickHold()) {
-                    if (bulletTimer <= 0 && ammo > 0) {
+                    if (BulletTimer <= 0 && Ammo > 0) {
                         Vector2 dir = Globals.mouse.newMousePos - pos;
                         GameGlobals.PassProjectile(new PlayerProjectile(pos, this, dir));
-                        bulletTimer = bulletTimerMax;
-                        ammo -= 1;
+                        BulletTimer = BulletTimerMax;
+                        Ammo -= 1;
                         
                         dir.Normalize();
                         dir = -dir;
