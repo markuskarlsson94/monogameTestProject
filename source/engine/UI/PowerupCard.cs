@@ -10,6 +10,7 @@ namespace topdownShooter {
         private Vector2 buttonSize;
         private Vector2 buttonPos;
         public event EventHandler powerupSelected;
+        protected Player player;
 
         public Vector2 Pos {
             get => pos;
@@ -22,6 +23,7 @@ namespace topdownShooter {
         public PowerupCard() {
             pos = new Vector2(0, 0);
             size = new Vector2(140, 200);
+            player = ((World)GameGlobals.GetWorld()).player;
 
             buttonSize = new Vector2(100, 20);
             buttonPos = new Vector2((size.X - buttonSize.X)/2, size.Y - buttonSize.Y - 5);
@@ -46,8 +48,8 @@ namespace topdownShooter {
             button.Update();
         }
 
-        protected Player Player() {
-            return ((World)GameGlobals.GetWorld()).player;
+        public virtual bool Valid() {
+            return true;
         }
 
         public void Draw() {
@@ -64,7 +66,7 @@ namespace topdownShooter {
 
         protected override Call Powerup() {
             return () => {
-                Player().Damage++;
+                player.Damage++;
             };
         }
 
@@ -79,13 +81,17 @@ namespace topdownShooter {
 
         protected override Call Powerup() {
             return () => {
-                Player player = Player();
                 player.Hp++;
             };
         }
 
         protected override string PowerupText() {
             return "Increase hp by 1.";
+        }
+
+
+        public override bool Valid() {
+            return player.Hp < player.HpMax;
         }
     }
 
@@ -95,7 +101,6 @@ namespace topdownShooter {
 
         protected override Call Powerup() {
             return () => {
-                Player player = Player();
                 player.HpMax++;
             };
         }
@@ -111,7 +116,7 @@ namespace topdownShooter {
 
         protected override Call Powerup() {
             return () => {
-                Player().AmmoMax++;
+                player.AmmoMax++;
             };
         }
 
@@ -122,31 +127,44 @@ namespace topdownShooter {
 
 
     public class ReloadTimerPowerupCard : PowerupCard {
+        private int amount = 10;
+
         public ReloadTimerPowerupCard() : base() {}
 
         protected override Call Powerup() {
             return () => {
-                Player().ReloadTimerMax -= 10;
+                player.ReloadTimerMax -= amount;
             };
         }
 
         protected override string PowerupText() {
             return "Decrease reload\n timer by 10 frames.";
         }
+
+        public override bool Valid() {
+            return player.ReloadTimerMax - amount > 0;
+        }
     }
 
 
     public class BulletTimerPowerupCard : PowerupCard {
+        private int amount = 2;
+
         public BulletTimerPowerupCard() : base() {}
 
         protected override Call Powerup() {
             return () => {
-                Player().BulletTimerMax -= 2;
+                player.BulletTimerMax -= amount;
             };
         }
 
         protected override string PowerupText() {
             return "Decrease bullet\n timer by 2 frames.";
+        }
+
+
+        public override bool Valid() {
+            return player.BulletTimerMax - amount > 0;
         }
     }
 
@@ -156,7 +174,7 @@ namespace topdownShooter {
 
         protected override Call Powerup() {
             return () => {
-                Player().OrbDistanceCollectionRadius += 30f;
+                player.OrbDistanceCollectionRadius += 30f;
             };
         }
 
@@ -171,7 +189,7 @@ namespace topdownShooter {
 
         protected override Call Powerup() {
             return () => {
-                Player().BulletSpeed += 1f;
+                player.BulletSpeed += 1f;
             };
         }
 
@@ -186,7 +204,7 @@ namespace topdownShooter {
 
         protected override Call Powerup() {
             return () => {
-                Player().MaxSpeed += 0.5f;
+                player.MaxSpeed += 0.5f;
             };
         }
 
@@ -201,7 +219,7 @@ namespace topdownShooter {
 
         protected override Call Powerup() {
             return () => {
-                Player().EnemyHitsMax++;
+                player.EnemyHitsMax++;
             };
         }
 
@@ -216,7 +234,7 @@ namespace topdownShooter {
 
         protected override Call Powerup() {
             return () => {
-                Player().BulletAmount++;
+                player.BulletAmount++;
             };
         }
 

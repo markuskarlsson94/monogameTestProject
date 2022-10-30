@@ -24,6 +24,15 @@ namespace topdownShooter {
                 new BulletAmountPowerupCard()
             };
 
+            for (int i = 0; i < cards.Count(); i++) {
+                PowerupCard powerup = cards[i];
+
+                if (!powerup.Valid()) {
+                    cards.RemoveAt(i);
+                    i--;
+                }
+            }
+
             Random rnd = new Random();
             cards = cards.OrderBy(x => rnd.Next()).ToList();
 
