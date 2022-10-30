@@ -101,10 +101,6 @@ namespace topdownShooter {
             hud.Update();
         }
 
-        public virtual void Draw2() {
-            hud.Draw();
-        }
-
         public virtual void AddProjectile(object obj) {
             projectiles.Add((Projectile)obj);
         }
@@ -155,6 +151,10 @@ namespace topdownShooter {
                 o.Draw(offset);
             }
 
+            //hud.Draw();
+        }
+
+        public virtual void Draw2() {
             hud.Draw();
         }
     }
