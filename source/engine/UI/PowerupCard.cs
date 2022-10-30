@@ -80,13 +80,28 @@ namespace topdownShooter {
         protected override Call Powerup() {
             return () => {
                 Player player = Player();
-                player.HpMax++;
                 player.Hp++;
             };
         }
 
         protected override string PowerupText() {
             return "Increase hp by 1.";
+        }
+    }
+
+
+    public class MaxHpPowerupCard : PowerupCard {
+        public MaxHpPowerupCard() : base() {}
+
+        protected override Call Powerup() {
+            return () => {
+                Player player = Player();
+                player.HpMax++;
+            };
+        }
+
+        protected override string PowerupText() {
+            return "Increase max\n hp by 1.";
         }
     }
 

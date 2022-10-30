@@ -13,6 +13,7 @@ namespace topdownShooter {
             List<PowerupCard> cards = new List<PowerupCard> {
                 new DamagePowerupCard(),
                 new HpPowerupCard(),
+                new MaxHpPowerupCard(),
                 new AmmoPowerupCard(),
                 new ReloadTimerPowerupCard(),
                 new BulletTimerPowerupCard(),
