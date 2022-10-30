@@ -20,7 +20,7 @@ namespace topdownShooter {
 
             spawnAccumulator= 0f;
             spawnRate = 1/240f;
-            spawnRateDelta = 1/1200000f;
+            spawnRateDelta = 1/800000f;
         }
 
         public void Update() {
