@@ -20,6 +20,7 @@ namespace topdownShooter
         public int BulletTimer { get; set; }
         public int BulletTimerMax { get; set; }
         public float OrbDistanceCollectionRadius { get; set; }
+        public int OrbLifetime { get; set; }
         public float BulletSpeed { get; set; }
         private int ReloadTimer { get; set; }
         public int ReloadTimerMax { get; set; }
@@ -44,6 +45,7 @@ namespace topdownShooter
             ReloadTimerMax = 120;
             ReloadTimer = ReloadTimerMax;
             OrbDistanceCollectionRadius = 60f;
+            OrbLifetime = 480;
             BulletSpeed = 4f;
             Damage = 4;
             EnemyHitsMax = 1;
@@ -79,7 +81,7 @@ namespace topdownShooter
         public float DamagePerSecond() {
             float duration = (AmmoMax - 1)*BulletTimerMax + ReloadTimerMax;
             float damage = Damage*AmmoMax*BulletAmount*EnemyHitsMax;
-            
+
             return damage/(duration/60);
         }
 

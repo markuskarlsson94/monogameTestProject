@@ -8,7 +8,7 @@ namespace topdownShooter {
 
         public Orb(Vector2 pos, Player player) : base("sprOrb", pos) {
             this.player = player;
-            lifeTimer = 480;
+            lifeTimer = player.OrbLifetime;
             movementComponent = new MovementComponent();
             movementComponent.MaxSpeed = 5f;
             movementComponent.SetFriction(0.1f);
