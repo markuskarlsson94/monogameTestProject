@@ -184,6 +184,21 @@ namespace topdownShooter {
     }
 
 
+    public class XpLifetimePowerupCard : PowerupCard {
+        public XpLifetimePowerupCard() : base() {}
+
+        protected override Call Powerup() {
+            return () => {
+                player.OrbLifetime += 120;
+            };
+        }
+
+        protected override string PowerupText() {
+            return "Increase xp\n lifetime by 2s.";
+        }
+    }
+
+
     public class BulletSpeedPowerupCard : PowerupCard {
         public BulletSpeedPowerupCard() : base() {}
 

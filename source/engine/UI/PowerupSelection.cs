@@ -18,6 +18,7 @@ namespace topdownShooter {
                 new ReloadTimerPowerupCard(),
                 new BulletTimerPowerupCard(),
                 new XpCollectionRadiusPowerupCard(),
+                new XpLifetimePowerupCard(),
                 new BulletSpeedPowerupCard(),
                 new SpeedPowerupCard(),
                 new EnemyHitsPowerupCard(),
