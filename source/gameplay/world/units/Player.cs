@@ -76,6 +76,13 @@ namespace topdownShooter
             if (damaged != null) damaged(this, null); 
         }
 
+        public float DamagePerSecond() {
+            float duration = (AmmoMax - 1)*BulletTimerMax + ReloadTimerMax;
+            float damage = Damage*AmmoMax*BulletAmount*EnemyHitsMax;
+            
+            return damage/(duration/60);
+        }
+
         public override void Update() {
             if (IsAlive()) {
                 //Input
