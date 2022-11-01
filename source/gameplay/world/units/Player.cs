@@ -142,10 +142,6 @@ namespace topdownShooter
 
                         BulletTimer = BulletTimerMax;
                         Ammo -= 1;
-                        
-                        dir.Normalize();
-                        dir = -dir;
-                        AddExternalVel(dir);
                     }
                 }
 
