@@ -15,27 +15,29 @@ namespace topdownShooter {
         }
 
         public override void Update() {
-            float dist = Vector2.Distance(pos, player.pos);
-            float distMax = player.OrbDistanceCollectionRadius;
-            Vector2 acc = new Vector2(0, 0);
+            if (player.IsAlive()) {
+                float dist = Vector2.Distance(pos, player.pos);
+                float distMax = player.OrbDistanceCollectionRadius;
+                Vector2 acc = new Vector2(0, 0);
 
-            if (dist < 10f) {
-                Remove();
-                GameGlobals.IncreaseXp();
-            } else if (dist < distMax) {
-                var dir = player.pos - pos;
-                dir.Normalize();
+                if (dist < 10f) {
+                    Remove();
+                    GameGlobals.IncreaseXp();
+                } else if (dist < distMax) {
+                    var dir = player.pos - pos;
+                    dir.Normalize();
 
-                float frac = 1f - (dist/distMax);
-                movementComponent.AddVel(dir*frac*1f);
-            }
+                    float frac = 1f - (dist/distMax);
+                    movementComponent.AddVel(dir*frac*1f);
+                }
 
-            movementComponent.SetAcc(acc);
-            movementComponent.Update(ref pos);
+                movementComponent.SetAcc(acc);
+                movementComponent.Update(ref pos);
 
-            lifeTimer -= 1f;
-            if (lifeTimer <= 0) {
-                Remove();
+                lifeTimer -= 1f;
+                if (lifeTimer <= 0) {
+                    Remove();
+                }
             }
 
             base.Update();

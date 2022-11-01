@@ -65,17 +65,15 @@ namespace topdownShooter {
                 } else {
                     hitTimer -= 1f;
                 }
-            } else {
-                StopMoving();
-            }
-
-            moveAwayTimer -= 1f;
-            if (moveAwayTimer <= 0) {
-                moveAwayTimer = moveAwayTimerMax;
-                MoveAwayFromEnemies();
+                
+                moveAwayTimer -= 1f;
+                if (moveAwayTimer <= 0) {
+                    moveAwayTimer = moveAwayTimerMax;
+                    MoveAwayFromEnemies();
+                }
+                movementComponent.Update(ref pos);
             }
             
-            movementComponent.Update(ref pos);
             base.Update();
         }
 
