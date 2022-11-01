@@ -114,12 +114,12 @@ namespace topdownShooter
 
                 //Shooting
                 if (BulletTimer > 0) {
-                    BulletTimer -= 1;
+                    BulletTimer--;
                 }
 
                 if (Ammo <= 0) {
                     if (ReloadTimer > 0) {
-                        ReloadTimer -= 1;
+                        ReloadTimer--;
 
                         if (ReloadTimer <= 0) {
                             ReloadTimer = ReloadTimerMax;
@@ -141,13 +141,13 @@ namespace topdownShooter
                         }
 
                         BulletTimer = BulletTimerMax;
-                        Ammo -= 1;
+                        Ammo--;
                     }
                 }
 
                 //Hurt timer
                 if (hurtTimer >= 0) {
-                    hurtTimer -= 1f;
+                    hurtTimer--;
                 }
             }
 
