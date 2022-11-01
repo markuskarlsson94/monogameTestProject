@@ -7,7 +7,8 @@ namespace topdownShooter {
         private Rectangle2D xpRect, xpRectOutline;
         private float middle, xpWidth, xpHeight;
         private PowerupSelection powerupSelection;
-        string introText;
+        string introText1;
+        string introText2;
         float introTextAlpha;
 
         public bool SelectingPowerup { get; set; }
@@ -23,7 +24,8 @@ namespace topdownShooter {
             xpRect = new Rectangle2D(new Vector2(middle - xpWidth/2, 10), new Vector2(middle - xpWidth/2, 15), true);
             xpRectOutline = new Rectangle2D(new Vector2(middle - xpWidth/2, 10), new Vector2(middle + xpWidth/2, 10 + xpHeight), false);
             
-            introText = "Move: WASD, Shoot: Left mouse button";
+            introText1 = "Move: WASD, Shoot: Left mouse button";
+            introText2 = "Pause: P, Restart: R, Toggle properties: I";
             introTextAlpha = 5f;
 
             SelectingPowerup = false;
@@ -53,7 +55,8 @@ namespace topdownShooter {
 
         public virtual void Draw() {
             if (introTextAlpha > 0) {
-                Utility.DrawText(Globals.spriteBatch, new Vector2(Globals.screenWidth/2, Globals.screenHeight/2), introText, Globals.gameFont, FontAlignment.middleCenter, Color.White*introTextAlpha);
+                Utility.DrawText(Globals.spriteBatch, new Vector2(Globals.screenWidth/2, Globals.screenHeight/2 - 12), introText1, Globals.gameFont, FontAlignment.middleCenter, Color.White*introTextAlpha);
+                Utility.DrawText(Globals.spriteBatch, new Vector2(Globals.screenWidth/2, Globals.screenHeight/2 + 12), introText2, Globals.gameFont, FontAlignment.middleCenter, Color.White*introTextAlpha);
             }
 
             Player player = world.player;
@@ -63,13 +66,11 @@ namespace topdownShooter {
 
                 string hpString = $"HP: {player.Hp.ToString()}/{player.HpMax.ToString()}";
                 string ammoString = $"Ammo: {player.Ammo.ToString()}/{player.AmmoMax.ToString()}";
-                string scoreString = $"Score: {world.score}";
-                string xpString = $"Level {world.level} ({world.xp}/{world.xpMax})";
+                string progressString = $"Score: {world.score}   Level: {world.level} ({world.xp}/{world.xpMax})";
 
                 Globals.spriteBatch.DrawString(Globals.gameFont, hpString , new Vector2(10, 10), Color.White);
                 Globals.spriteBatch.DrawString(Globals.gameFont, ammoString , new Vector2(10, 30), Color.White);
-                Globals.spriteBatch.DrawString(Globals.gameFont, scoreString , new Vector2(10, 50), Color.White);
-                Globals.spriteBatch.DrawString(Globals.gameFont, xpString , new Vector2(middle + xpWidth/2 + 8, 4), Color.White);
+                Utility.DrawText(Globals.spriteBatch, new Vector2(Globals.screenWidth/2, 30), progressString, Globals.gameFont, FontAlignment.topCenter, Color.White);
                 
                 if (ShowProperties) {
                     string DPSString = $"{player.DamagePerSecond().ToString("0.0")} damage/s";
