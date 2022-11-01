@@ -11,6 +11,7 @@ namespace topdownShooter {
         float introTextAlpha;
 
         public bool SelectingPowerup { get; set; }
+        public bool ShowProperties { get; set; }
 
         public HUD(World world) {
             this.world = world;
@@ -26,6 +27,7 @@ namespace topdownShooter {
             introTextAlpha = 5f;
 
             SelectingPowerup = false;
+            ShowProperties = true;
         }
 
         public void CreatePowerupSelection() {
@@ -43,6 +45,10 @@ namespace topdownShooter {
         public virtual void Update() {
             if (powerupSelection != null) powerupSelection.Update();
             introTextAlpha = Math.Max(introTextAlpha - 0.01f, 0);
+
+            if (Globals.keyboard.GetPressed("I")) {
+                ShowProperties = !ShowProperties;
+            }
         }
 
         public virtual void Draw() {
@@ -65,34 +71,36 @@ namespace topdownShooter {
                 Globals.spriteBatch.DrawString(Globals.gameFont, scoreString , new Vector2(10, 50), Color.White);
                 Globals.spriteBatch.DrawString(Globals.gameFont, xpString , new Vector2(middle + xpWidth/2 + 8, 4), Color.White);
                 
-                string DPSString = $"{player.DamagePerSecond().ToString("0.0")} damage/s";
-                float spawnRate = ((World)GameGlobals.GetWorld()).enemySpawner.SpawnRate*60f;
-                string spawnString = $"Spawn rate: {spawnRate.ToString("0.000")}/s";
-                Utility.DrawText(Globals.spriteBatch, new Vector2(790, 450), DPSString, Globals.gameFont, FontAlignment.topRight, Color.White*alpha);
-                Utility.DrawText(Globals.spriteBatch, new Vector2(790, 470), spawnString, Globals.gameFont, FontAlignment.topRight, Color.White*alpha);
+                if (ShowProperties) {
+                    string DPSString = $"{player.DamagePerSecond().ToString("0.0")} damage/s";
+                    float spawnRate = ((World)GameGlobals.GetWorld()).enemySpawner.SpawnRate*60f;
+                    string spawnString = $"Spawn rate: {spawnRate.ToString("0.000")}/s";
+                    Utility.DrawText(Globals.spriteBatch, new Vector2(790, 450), DPSString, Globals.gameFont, FontAlignment.topRight, Color.White*alpha);
+                    Utility.DrawText(Globals.spriteBatch, new Vector2(790, 470), spawnString, Globals.gameFont, FontAlignment.topRight, Color.White*alpha);
 
-                string damageString = $"Damage: {player.Damage}";
-                string speedString = $"Speed: {player.MaxSpeed}";
-                string reloadTimerString = $"Reload time: {player.ReloadTimerMax}";
-                string bulletTimerString = $"Bullet time: {player.BulletTimerMax}";
-                string bulletAmountString = $"Bullet amount: {player.BulletAmount}";
-                string bulletSpeedString = $"Bullet speed: {player.BulletSpeed}";
-                string bulletHitsString = $"Bullet hits: {player.EnemyHitsMax}";
-                string xpCollectionRadiusString = $"Xp pickup radius: {player.OrbDistanceCollectionRadius}";
-                string xpLifetimeString = $"Xp lifetime: {player.OrbLifetime}";
-                
-                int yPos = 470;
-                int i = 0;
+                    string damageString = $"Damage: {player.Damage}";
+                    string speedString = $"Speed: {player.MaxSpeed}";
+                    string reloadTimerString = $"Reload time: {player.ReloadTimerMax}";
+                    string bulletTimerString = $"Bullet time: {player.BulletTimerMax}";
+                    string bulletAmountString = $"Bullet amount: {player.BulletAmount}";
+                    string bulletSpeedString = $"Bullet speed: {player.BulletSpeed}";
+                    string bulletHitsString = $"Bullet hits: {player.EnemyHitsMax}";
+                    string xpCollectionRadiusString = $"Xp pickup radius: {player.OrbDistanceCollectionRadius}";
+                    string xpLifetimeString = $"Xp lifetime: {player.OrbLifetime}";
+                    
+                    int yPos = 470;
+                    int i = 0;
 
-                Globals.spriteBatch.DrawString(Globals.gameFont, xpLifetimeString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
-                Globals.spriteBatch.DrawString(Globals.gameFont, xpCollectionRadiusString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
-                Globals.spriteBatch.DrawString(Globals.gameFont, bulletHitsString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
-                Globals.spriteBatch.DrawString(Globals.gameFont, bulletSpeedString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
-                Globals.spriteBatch.DrawString(Globals.gameFont, bulletTimerString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
-                Globals.spriteBatch.DrawString(Globals.gameFont, bulletAmountString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
-                Globals.spriteBatch.DrawString(Globals.gameFont, reloadTimerString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
-                Globals.spriteBatch.DrawString(Globals.gameFont, speedString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
-                Globals.spriteBatch.DrawString(Globals.gameFont, damageString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
+                    Globals.spriteBatch.DrawString(Globals.gameFont, xpLifetimeString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
+                    Globals.spriteBatch.DrawString(Globals.gameFont, xpCollectionRadiusString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
+                    Globals.spriteBatch.DrawString(Globals.gameFont, bulletHitsString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
+                    Globals.spriteBatch.DrawString(Globals.gameFont, bulletSpeedString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
+                    Globals.spriteBatch.DrawString(Globals.gameFont, bulletTimerString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
+                    Globals.spriteBatch.DrawString(Globals.gameFont, bulletAmountString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
+                    Globals.spriteBatch.DrawString(Globals.gameFont, reloadTimerString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
+                    Globals.spriteBatch.DrawString(Globals.gameFont, speedString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
+                    Globals.spriteBatch.DrawString(Globals.gameFont, damageString, new Vector2(10, yPos - (20*i++)), Color.White*alpha);
+                }
 
                 float ratio = (float)world.xp/(float)world.xpMax;
                 xpRect.P1 = new Vector2(middle - xpWidth/2 + (ratio*xpWidth), 15);
