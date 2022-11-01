@@ -52,9 +52,11 @@ namespace topdownShooter {
         }
 
         public virtual void Update() {
-            if (Globals.keyboard.GetPressed("P")) paused = !paused;
+            if (Globals.keyboard.GetPressed("P")) {
+                paused = !paused;
+            }
 
-            if (!paused) {
+            if (!paused && !hud.SelectingPowerup) {
                 player?.Update();
                 enemySpawner.Update();
 
@@ -101,7 +103,7 @@ namespace topdownShooter {
 
             }
 
-            hud.Update();
+            if (!paused) hud.Update();
 
             flashAlpha = Math.Max(flashAlpha - 0.05f, 0f);
         }
@@ -129,7 +131,6 @@ namespace topdownShooter {
                 ++level;
 
                 hud.CreatePowerupSelection();
-                paused = true;
             }
         }
 
@@ -170,7 +171,14 @@ namespace topdownShooter {
         }
 
         public virtual void Draw2() {
-            hud.Draw();
+            hud.Draw(); 
         }
+
+        public virtual void Draw3() {
+            if (paused) {
+                DrawFunctions.DrawRectangle(new Vector2(0, 0), new Vector2(Globals.screenWidth, Globals.screenHeight), true, Color.Black*0.5f);
+                Utility.DrawText(Globals.spriteBatch, new Vector2(Globals.screenWidth/2, Globals.screenHeight/2), "Paused", Globals.gameFont, FontAlignment.middleCenter, Color.White);
+            }
+        } 
     }
 }
