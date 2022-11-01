@@ -19,7 +19,7 @@ namespace topdownShooter {
             random = new Random();
 
             spawnAccumulator= 0f;
-            spawnRate = 1/240f;
+            spawnRate = 1/400f;
             spawnRateDelta = 1/800000f;
         }
 
