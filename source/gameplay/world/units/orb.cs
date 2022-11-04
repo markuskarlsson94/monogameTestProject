@@ -4,11 +4,13 @@ namespace topdownShooter {
     public class Orb : GameObject, IMovementComponent {
         private Player player;
         private MovementComponent movementComponent;
-        private float lifeTimer;
+        private int lifeTimer;
+        private int lifeTimerWarningThreshold;
 
         public Orb(Vector2 pos, Player player) : base("sprOrb", pos) {
             this.player = player;
             lifeTimer = player.OrbLifetime;
+            lifeTimerWarningThreshold = 240;
             movementComponent = new MovementComponent();
             movementComponent.MaxSpeed = 5f;
             movementComponent.SetFriction(0.1f);
@@ -34,10 +36,12 @@ namespace topdownShooter {
                 movementComponent.SetAcc(acc);
                 movementComponent.Update(ref pos);
 
-                lifeTimer -= 1f;
+                lifeTimer -= 1;
                 if (lifeTimer <= 0) {
                     Remove();
                 }
+
+                alpha = ((lifeTimer > lifeTimerWarningThreshold || lifeTimer % 10 < 5) ? 1f : 0.2f);
             }
 
             base.Update();
