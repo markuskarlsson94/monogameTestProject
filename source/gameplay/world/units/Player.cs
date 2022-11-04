@@ -44,7 +44,7 @@ namespace topdownShooter
             Ammo = AmmoMax;
             ReloadTimerMax = 120;
             ReloadTimer = ReloadTimerMax;
-            OrbDistanceCollectionRadius = 60f;
+            OrbDistanceCollectionRadius = 70f;
             OrbLifetime = 480;
             BulletSpeed = 4f;
             Damage = 4;
