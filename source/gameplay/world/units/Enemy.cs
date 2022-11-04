@@ -40,7 +40,7 @@ namespace topdownShooter {
 
             if (hp <= 0) {
                 Remove();
-                Orb orb = new Orb(pos, player);
+                XpOrb orb = new XpOrb(pos, player);
                 orb.AddExternalVel(vel);
                 GameGlobals.PassOrb(orb);
                 GameGlobals.IncreaseScore();
@@ -73,7 +73,7 @@ namespace topdownShooter {
                 }
                 movementComponent.Update(ref pos);
             }
-            
+
             base.Update();
         }
 

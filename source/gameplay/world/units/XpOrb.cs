@@ -1,13 +1,13 @@
 using Microsoft.Xna.Framework;
 
 namespace topdownShooter {
-    public class Orb : GameObject, IMovementComponent {
+    public class XpOrb : GameObject, IMovementComponent {
         private Player player;
         private MovementComponent movementComponent;
         private int lifeTimer;
         private int lifeTimerWarningThreshold;
 
-        public Orb(Vector2 pos, Player player) : base("sprOrb", pos) {
+        public XpOrb(Vector2 pos, Player player) : base("sprOrb", pos) {
             this.player = player;
             lifeTimer = player.OrbLifetime;
             lifeTimerWarningThreshold = 240;

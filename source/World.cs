@@ -8,7 +8,7 @@ namespace topdownShooter {
         public Player player;
         public List<Projectile> projectiles = new List<Projectile>();
         public List<Enemy> enemies = new List<Enemy>();
-        public List<Orb> orbs = new List<Orb>();
+        public List<XpOrb> orbs = new List<XpOrb>();
         public EnemySpawner enemySpawner;
         public bool paused;
         public int score;
@@ -83,7 +83,7 @@ namespace topdownShooter {
                 }
 
                 for (int i = 0; i < orbs.Count; i++) {
-                    Orb o = orbs[i];
+                    XpOrb o = orbs[i];
 
                     if (o.remove) {
                         orbs.RemoveAt(i);
@@ -117,7 +117,7 @@ namespace topdownShooter {
         }
 
         public virtual void AddOrb(object obj) {
-            orbs.Add((Orb)obj);
+            orbs.Add((XpOrb)obj);
         }
 
         public virtual void IncreaseScore() {
@@ -161,7 +161,7 @@ namespace topdownShooter {
                 e.Draw(offset);
             }
 
-            foreach (Orb o in orbs) {
+            foreach (XpOrb o in orbs) {
                 o.Draw(offset);
             }
 
