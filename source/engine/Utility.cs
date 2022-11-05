@@ -47,6 +47,9 @@ namespace topdownShooter {
                 case FontAlignment.bottomRight: { p = new Vector2(pos.X - size.X, pos.Y - size.Y); break; }
             }
 
+            p.X = (float)Math.Round(p.X);
+            p.Y = (float)Math.Round(p.Y);
+
             spriteBatch.DrawString(font, text, p, color);
         }
     }
