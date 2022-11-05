@@ -52,7 +52,7 @@ namespace topdownShooter {
         }
 
         public virtual void Update() {
-            if (Globals.keyboard.GetPressed("P")) {
+            if (Globals.keyboard.GetPressed("P") && player.IsAlive()) {
                 paused = !paused;
             }
 
@@ -178,6 +178,12 @@ namespace topdownShooter {
             if (paused) {
                 DrawFunctions.DrawRectangle(new Vector2(0, 0), new Vector2(Globals.screenWidth, Globals.screenHeight), true, Color.Black*0.5f);
                 Utility.DrawText(Globals.spriteBatch, new Vector2(Globals.screenWidth/2, Globals.screenHeight/2), "Paused", Globals.gameFont, FontAlignment.middleCenter, Color.White);
+            }
+
+            if (!player.IsAlive()) {
+                DrawFunctions.DrawRectangle(new Vector2(0, 0), new Vector2(Globals.screenWidth, Globals.screenHeight), true, Color.Black*0.5f);
+                Utility.DrawText(Globals.spriteBatch, new Vector2(Globals.screenWidth/2, Globals.screenHeight/2 - 10), "Game over. Press R to restart", Globals.gameFont, FontAlignment.middleCenter, Color.White);
+                Utility.DrawText(Globals.spriteBatch, new Vector2(Globals.screenWidth/2, Globals.screenHeight/2 + 10), $"score: {score}", Globals.gameFont, FontAlignment.middleCenter, Color.White);
             }
         } 
     }
