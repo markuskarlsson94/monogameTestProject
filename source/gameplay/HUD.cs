@@ -7,9 +7,9 @@ namespace topdownShooter {
         private Rectangle2D xpRect, xpRectOutline;
         private float middle, xpWidth, xpHeight;
         private PowerupSelection powerupSelection;
-        string introText1;
-        string introText2;
-        float introTextAlpha;
+        private string introText1;
+        private string introText2;
+        private float introTextAlpha;
 
         public bool SelectingPowerup { get; set; }
         public bool ShowProperties { get; set; }
